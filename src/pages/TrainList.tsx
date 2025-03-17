@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { ArrowLeft, Filter, ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -10,7 +9,7 @@ import TrainCard from "@/components/TrainCard";
 const TrainList = () => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
-  // Sample train data
+  // Sample train data with corrected status values to match the TrainSeatAvailability type
   const trains = [
     {
       trainNumber: "12301",
@@ -22,10 +21,10 @@ const TrainList = () => {
       duration: "17h 05m",
       date: "Mon, 12 Apr",
       availability: [
-        { class: "3A", available: 12, fare: 1745, status: "available" },
-        { class: "2A", available: 5, fare: 2745, status: "available" },
-        { class: "1A", available: 2, fare: 4565, status: "available" },
-        { class: "SL", available: 0, fare: 675, status: "waitlist" },
+        { class: "3A", available: 12, fare: 1745, status: "available" as const },
+        { class: "2A", available: 5, fare: 2745, status: "available" as const },
+        { class: "1A", available: 2, fare: 4565, status: "available" as const },
+        { class: "SL", available: 0, fare: 675, status: "waitlist" as const },
       ],
     },
     {
@@ -38,10 +37,10 @@ const TrainList = () => {
       duration: "16h 00m",
       date: "Mon, 12 Apr",
       availability: [
-        { class: "3A", available: 0, fare: 1720, status: "waitlist" },
-        { class: "2A", available: 3, fare: 2720, status: "available" },
-        { class: "1A", available: 1, fare: 4520, status: "available" },
-        { class: "SL", available: 0, fare: 650, status: "sold" },
+        { class: "3A", available: 0, fare: 1720, status: "waitlist" as const },
+        { class: "2A", available: 3, fare: 2720, status: "available" as const },
+        { class: "1A", available: 1, fare: 4520, status: "available" as const },
+        { class: "SL", available: 0, fare: 650, status: "sold" as const },
       ],
     },
     {
@@ -54,10 +53,10 @@ const TrainList = () => {
       duration: "17h 55m",
       date: "Mon, 12 Apr",
       availability: [
-        { class: "3A", available: 25, fare: 1825, status: "available" },
-        { class: "2A", available: 15, fare: 2825, status: "available" },
-        { class: "1A", available: 5, fare: 4625, status: "available" },
-        { class: "SL", available: 35, fare: 695, status: "available" },
+        { class: "3A", available: 25, fare: 1825, status: "available" as const },
+        { class: "2A", available: 15, fare: 2825, status: "available" as const },
+        { class: "1A", available: 5, fare: 4625, status: "available" as const },
+        { class: "SL", available: 35, fare: 695, status: "available" as const },
       ],
     },
   ];
