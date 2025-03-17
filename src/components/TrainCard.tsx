@@ -1,6 +1,6 @@
 
 import React from "react";
-import { ArrowRight, Clock, CalendarDays, TrendingUp, MapPin, Zap } from "lucide-react";
+import { ArrowRight, Clock, CalendarDays, TrendingUp, MapPin, Zap, Train, Shield } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -72,13 +72,18 @@ const TrainCard = ({
   className,
 }: TrainCardProps) => {
   return (
-    <Card className={cn("overflow-hidden transition-all duration-300 hover:shadow-medium", className)}>
-      <div className="p-6">
+    <Card className={cn("overflow-hidden transition-all duration-300 hover:shadow-medium border-none", className)}>
+      <div className="p-6 relative">
+        {/* Train decoration */}
+        <div className="absolute top-0 right-0 opacity-5 pointer-events-none">
+          <Train size={120} strokeWidth={1} />
+        </div>
+        
         {/* Train Info */}
-        <div className="flex flex-col md:flex-row justify-between md:items-center mb-6">
+        <div className="flex flex-col md:flex-row justify-between md:items-center mb-6 relative z-10">
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <span className="bg-irctc-blue-light text-irctc-blue text-xs font-medium px-2.5 py-0.5 rounded">
+              <span className="bg-gradient-to-r from-irctc-blue to-blue-500 text-white text-xs font-medium px-3 py-1 rounded-full">
                 {trainNumber}
               </span>
               <h3 className="font-semibold text-lg md:text-xl">{trainName}</h3>
@@ -91,6 +96,10 @@ const TrainCard = ({
               <div className="flex items-center gap-1">
                 <TrendingUp className="h-4 w-4" />
                 <span>Daily</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <Shield className="h-4 w-4 text-green-500" />
+                <span className="text-green-500 font-medium">Superfast</span>
               </div>
             </div>
           </div>
@@ -106,7 +115,7 @@ const TrainCard = ({
             <Button 
               variant="default" 
               size="sm" 
-              className="rounded-xl bg-irctc-blue hover:bg-irctc-blue-dark"
+              className="rounded-xl bg-gradient-to-r from-irctc-blue to-blue-500 hover:from-irctc-blue-dark hover:to-blue-600"
               onClick={onBook}
             >
               Book Now
@@ -115,12 +124,13 @@ const TrainCard = ({
         </div>
 
         {/* Journey Details */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between mb-6">
+        <div className="flex flex-col md:flex-row md:items-center justify-between mb-6 bg-gray-50 p-4 rounded-xl">
           <div className="flex items-center gap-6 md:gap-12">
             {/* Departure */}
-            <div>
-              <p className="text-2xl font-semibold">{departureTime}</p>
-              <div className="flex items-center gap-1 mt-1">
+            <div className="relative">
+              <div className="absolute -left-2 top-1/2 w-4 h-4 rounded-full bg-irctc-blue transform -translate-y-1/2"></div>
+              <p className="text-2xl font-semibold ml-4">{departureTime}</p>
+              <div className="flex items-center gap-1 mt-1 ml-4">
                 <MapPin className="h-4 w-4 text-irctc-gray-text" />
                 <p className="text-sm text-irctc-gray-text">{from}</p>
               </div>
@@ -128,21 +138,21 @@ const TrainCard = ({
 
             {/* Duration */}
             <div className="flex flex-col items-center">
-              <div className="text-xs text-irctc-gray-text-light bg-irctc-gray rounded-full px-2 py-0.5">
+              <div className="text-xs font-medium text-irctc-blue bg-irctc-blue-light rounded-full px-3 py-0.5">
                 {duration}
               </div>
-              <div className="relative w-16 my-2">
-                <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-irctc-gray-dark"></div>
-                <div className="absolute top-1/2 left-0 w-2 h-2 rounded-full bg-irctc-blue transform -translate-y-1/2"></div>
-                <div className="absolute top-1/2 right-0 w-2 h-2 rounded-full bg-irctc-blue transform -translate-y-1/2"></div>
+              <div className="relative w-24 my-2">
+                <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-irctc-blue-light"></div>
+                <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-irctc-blue-light animate-pulse-gentle"></div>
               </div>
               <div className="text-xs text-irctc-gray-text-light">Direct</div>
             </div>
 
             {/* Arrival */}
-            <div>
-              <p className="text-2xl font-semibold">{arrivalTime}</p>
-              <div className="flex items-center gap-1 mt-1">
+            <div className="relative">
+              <div className="absolute -left-2 top-1/2 w-4 h-4 rounded-full bg-red-500 transform -translate-y-1/2"></div>
+              <p className="text-2xl font-semibold ml-4">{arrivalTime}</p>
+              <div className="flex items-center gap-1 mt-1 ml-4">
                 <MapPin className="h-4 w-4 text-irctc-gray-text" />
                 <p className="text-sm text-irctc-gray-text">{to}</p>
               </div>
@@ -159,18 +169,26 @@ const TrainCard = ({
 
         {/* Availability */}
         <div className="mt-4">
-          <p className="text-sm font-medium mb-3">Availability:</p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+          <p className="text-sm font-medium mb-3 flex items-center">
+            <span className="bg-irctc-blue-light text-irctc-blue text-xs font-medium px-2 py-0.5 rounded mr-2">
+              Seats
+            </span>
+            Availability
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
             {availability.map((item, index) => (
               <div
                 key={index}
-                className="border border-irctc-gray rounded-lg p-3 flex flex-col"
+                className={cn(
+                  "border rounded-lg p-3 flex flex-col transition-all", 
+                  item.status === "available" ? "border-green-200" : "border-irctc-gray"
+                )}
               >
                 <div className="flex justify-between items-center mb-2">
                   <span className="font-medium">{item.class}</span>
-                  <span className="text-sm text-irctc-gray-text">₹{item.fare}</span>
+                  <span className="text-sm font-medium text-irctc-blue">₹{item.fare}</span>
                 </div>
-                <div className={cn("text-xs px-2 py-1 rounded-md mt-1 font-medium", getStatusColor(item.status))}>
+                <div className={cn("text-xs px-2 py-1 rounded-md mt-1 font-medium flex items-center justify-center", getStatusColor(item.status))}>
                   {getStatusText(item.status, item.available)}
                 </div>
               </div>
