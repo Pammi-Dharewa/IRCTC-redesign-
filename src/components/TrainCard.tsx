@@ -4,6 +4,7 @@ import { ArrowRight, Clock, CalendarDays, TrendingUp, MapPin, Zap, Train, Shield
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 type TrainSeatAvailability = {
   class: string;
@@ -71,19 +72,41 @@ const TrainCard = ({
   onCheckFare,
   className,
 }: TrainCardProps) => {
+  // Generate a random gradient for each train card to make them visually distinct
+  const gradients = [
+    "from-purple-500 to-pink-500",
+    "from-blue-500 to-cyan-500",
+    "from-amber-500 to-orange-600",
+    "from-green-500 to-teal-500",
+    "from-rose-500 to-red-500"
+  ];
+  
+  const randomGradient = gradients[Math.floor(Math.random() * gradients.length)];
+  
   return (
-    <Card className={cn("overflow-hidden transition-all duration-300 hover:shadow-medium border-none", className)}>
+    <Card 
+      className={cn(
+        "overflow-hidden transition-all duration-300 hover:shadow-medium border-none relative group",
+        className
+      )}
+    >
+      {/* Decorative header strip with gradient */}
+      <div className={`h-2 w-full bg-gradient-to-r ${randomGradient}`}></div>
+      
       <div className="p-6 relative">
-        {/* Train decoration */}
+        {/* Train illustration decorative element */}
         <div className="absolute top-0 right-0 opacity-5 pointer-events-none">
           <Train size={120} strokeWidth={1} />
         </div>
+        
+        {/* Modern train track decorative element */}
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-irctc-gray-dark opacity-10"></div>
         
         {/* Train Info */}
         <div className="flex flex-col md:flex-row justify-between md:items-center mb-6 relative z-10">
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <span className="bg-gradient-to-r from-irctc-blue to-blue-500 text-white text-xs font-medium px-3 py-1 rounded-full">
+              <span className={`bg-gradient-to-r ${randomGradient} text-white text-xs font-medium px-3 py-1 rounded-full`}>
                 {trainNumber}
               </span>
               <h3 className="font-semibold text-lg md:text-xl">{trainName}</h3>
@@ -107,7 +130,7 @@ const TrainCard = ({
             <Button 
               variant="outline" 
               size="sm" 
-              className="rounded-xl border-irctc-blue text-irctc-blue hover:bg-irctc-blue-light"
+              className="rounded-xl border-irctc-blue text-irctc-blue hover:bg-irctc-blue-light group-hover:translate-x-1 transition-all"
               onClick={onCheckFare}
             >
               Check Fare
@@ -115,7 +138,7 @@ const TrainCard = ({
             <Button 
               variant="default" 
               size="sm" 
-              className="rounded-xl bg-gradient-to-r from-irctc-blue to-blue-500 hover:from-irctc-blue-dark hover:to-blue-600"
+              className={`rounded-xl bg-gradient-to-r ${randomGradient} hover:opacity-90 group-hover:scale-105 transition-all`}
               onClick={onBook}
             >
               Book Now
@@ -123,12 +146,12 @@ const TrainCard = ({
           </div>
         </div>
 
-        {/* Journey Details */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between mb-6 bg-gray-50 p-4 rounded-xl">
+        {/* Journey Details with enhanced visual design */}
+        <div className="flex flex-col md:flex-row md:items-center justify-between mb-6 bg-gradient-to-r from-gray-50 to-white p-4 rounded-xl border border-gray-100 shadow-sm">
           <div className="flex items-center gap-6 md:gap-12">
-            {/* Departure */}
+            {/* Departure with enhanced styling */}
             <div className="relative">
-              <div className="absolute -left-2 top-1/2 w-4 h-4 rounded-full bg-irctc-blue transform -translate-y-1/2"></div>
+              <div className="absolute -left-2 top-1/2 w-4 h-4 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 transform -translate-y-1/2 animate-pulse-gentle"></div>
               <p className="text-2xl font-semibold ml-4">{departureTime}</p>
               <div className="flex items-center gap-1 mt-1 ml-4">
                 <MapPin className="h-4 w-4 text-irctc-gray-text" />
@@ -136,21 +159,26 @@ const TrainCard = ({
               </div>
             </div>
 
-            {/* Duration */}
+            {/* Duration with animated train track */}
             <div className="flex flex-col items-center">
               <div className="text-xs font-medium text-irctc-blue bg-irctc-blue-light rounded-full px-3 py-0.5">
                 {duration}
               </div>
               <div className="relative w-24 my-2">
                 <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-irctc-blue-light"></div>
-                <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-irctc-blue-light animate-pulse-gentle"></div>
+                <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-irctc-blue to-blue-500 animate-pulse-gentle"></div>
+                
+                {/* Animated mini train */}
+                <div className="absolute top-1/2 left-0 transform -translate-y-1/2 animate-[train-move_15s_linear_infinite]">
+                  <div className="h-2 w-2 bg-irctc-blue rounded-full"></div>
+                </div>
               </div>
               <div className="text-xs text-irctc-gray-text-light">Direct</div>
             </div>
 
-            {/* Arrival */}
+            {/* Arrival with enhanced styling */}
             <div className="relative">
-              <div className="absolute -left-2 top-1/2 w-4 h-4 rounded-full bg-red-500 transform -translate-y-1/2"></div>
+              <div className="absolute -left-2 top-1/2 w-4 h-4 rounded-full bg-gradient-to-r from-red-500 to-pink-500 transform -translate-y-1/2 animate-pulse-gentle"></div>
               <p className="text-2xl font-semibold ml-4">{arrivalTime}</p>
               <div className="flex items-center gap-1 mt-1 ml-4">
                 <MapPin className="h-4 w-4 text-irctc-gray-text" />
@@ -167,7 +195,7 @@ const TrainCard = ({
           </div>
         </div>
 
-        {/* Availability */}
+        {/* Availability with enhanced visual design */}
         <div className="mt-4">
           <p className="text-sm font-medium mb-3 flex items-center">
             <span className="bg-irctc-blue-light text-irctc-blue text-xs font-medium px-2 py-0.5 rounded mr-2">
@@ -180,13 +208,13 @@ const TrainCard = ({
               <div
                 key={index}
                 className={cn(
-                  "border rounded-lg p-3 flex flex-col transition-all", 
+                  "border rounded-lg p-3 flex flex-col transition-all hover:shadow-sm group/seat", 
                   item.status === "available" ? "border-green-200" : "border-irctc-gray"
                 )}
               >
                 <div className="flex justify-between items-center mb-2">
                   <span className="font-medium">{item.class}</span>
-                  <span className="text-sm font-medium text-irctc-blue">₹{item.fare}</span>
+                  <span className="text-sm font-medium text-irctc-blue group-hover/seat:scale-110 transition-transform">₹{item.fare}</span>
                 </div>
                 <div className={cn("text-xs px-2 py-1 rounded-md mt-1 font-medium flex items-center justify-center", getStatusColor(item.status))}>
                   {getStatusText(item.status, item.available)}

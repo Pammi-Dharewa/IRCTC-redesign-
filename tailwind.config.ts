@@ -146,6 +146,41 @@ export default {
 					'50%': {
 						opacity: '0.8'
 					}
+				},
+				'float': {
+					'0%, 100%': {
+						transform: 'translateY(0)'
+					},
+					'50%': {
+						transform: 'translateY(-10px)'
+					}
+				},
+				'train-move': {
+					'0%': {
+						left: '0%'
+					},
+					'100%': {
+						left: '100%'
+					}
+				},
+				'shimmer': {
+					'0%': {
+						backgroundPosition: '-200% 0'
+					},
+					'100%': {
+						backgroundPosition: '200% 0'
+					}
+				},
+				'blob-morphing': {
+					'0%': {
+						borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%'
+					},
+					'50%': {
+						borderRadius: '30% 60% 70% 40% / 50% 60% 30% 60%'
+					},
+					'100%': {
+						borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%'
+					}
 				}
 			},
 			animation: {
@@ -155,15 +190,32 @@ export default {
 				'fade-out': 'fade-out 0.5s ease-out',
 				'scale-in': 'scale-in 0.3s ease-out',
 				'slide-up': 'slide-up 0.4s ease-out',
-				'pulse-gentle': 'pulse-gentle 2s ease-in-out infinite'
+				'pulse-gentle': 'pulse-gentle 2s ease-in-out infinite',
+				'float': 'float 6s ease-in-out infinite',
+				'train-move': 'train-move 15s linear infinite',
+				'shimmer': 'shimmer 2s ease-in-out infinite',
+				'blob-morphing': 'blob-morphing 25s ease-in-out infinite'
 			},
 			boxShadow: {
 				'soft': '0 2px 15px rgba(0, 0, 0, 0.03)',
 				'medium': '0 4px 20px rgba(0, 0, 0, 0.05)',
 				'card': '0 2px 15px rgba(0, 0, 0, 0.03), 0 0 1px rgba(0, 0, 0, 0.05)',
+				'inner-glow': 'inset 0 0 10px rgba(0, 87, 255, 0.1)',
+				'glow-blue': '0 0 15px rgba(0, 87, 255, 0.5)'
 			},
 			backdropBlur: {
 				'xs': '2px',
+			},
+			backgroundImage: {
+				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+				'gradient-dots': 'radial-gradient(rgba(0, 87, 255, 0.1) 2px, transparent 2px)',
+				'shimmer': 'linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%)',
+			},
+			backgroundSize: {
+				'dots-sm': '20px 20px',
+				'dots-md': '30px 30px',
+				'grid-sm': '20px 20px',
+				'shimmer': '200% 100%',
 			}
 		}
 	},

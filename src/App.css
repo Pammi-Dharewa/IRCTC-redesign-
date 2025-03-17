@@ -1,7 +1,8 @@
+
 #root {
-  max-width: 1280px;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0;
   text-align: center;
 }
 
@@ -27,9 +28,86 @@
   }
 }
 
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes train-move {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes station-pass {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+.float-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+.shape-blob {
+  background: rgba(0, 87, 255, 0.1);
+  border-radius: 50% 50% 50% 70% / 50% 50% 70% 60%;
+  animation: blob-animation 25s linear infinite alternate;
+}
+
+@keyframes blob-animation {
+  0% {
+    border-radius: 50% 50% 50% 70% / 50% 50% 70% 60%;
+  }
+  25% {
+    border-radius: 60% 40% 60% 40% / 50% 50% 40% 60%;
+  }
+  50% {
+    border-radius: 40% 60% 50% 50% / 60% 40% 60% 40%;
+  }
+  75% {
+    border-radius: 50% 50% 40% 60% / 40% 60% 50% 50%;
+  }
+  100% {
+    border-radius: 70% 50% 50% 50% / 60% 50% 50% 70%;
+  }
+}
+
+.parallax-bg {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
+  }
+  
+  .float-animation {
+    animation: float 6s ease-in-out infinite;
   }
 }
 
@@ -39,4 +117,94 @@
 
 .read-the-docs {
   color: #888;
+}
+
+/* Fancy scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 87, 255, 0.5);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 87, 255, 0.7);
+}
+
+/* Train animation for hero section */
+.train-track {
+  height: 4px;
+  background: repeating-linear-gradient(
+    90deg,
+    #aaa,
+    #aaa 10px,
+    transparent 10px,
+    transparent 20px
+  );
+  position: relative;
+}
+
+.train-animation {
+  position: absolute;
+  width: 50px;
+  height: 20px;
+  background-color: #0057FF;
+  border-radius: 5px;
+  animation: train-move 10s linear infinite;
+}
+
+/* Animated background patterns */
+.pattern-dots {
+  background-image: radial-gradient(rgba(0, 87, 255, 0.1) 2px, transparent 2px);
+  background-size: 24px 24px;
+}
+
+.gradient-mesh {
+  background: 
+    linear-gradient(rgba(0, 87, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 87, 255, 0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Hero section curves */
+.curved-bottom {
+  position: relative;
+}
+
+.curved-bottom::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background-color: white;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  z-index: 1;
+}
+
+.curve-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.curve-bg::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(0, 87, 255, 0.1) 0%, transparent 50%);
 }
