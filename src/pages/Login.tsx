@@ -1,11 +1,10 @@
-
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { User, Lock, Eye, EyeOff, Mail, ArrowLeft, Smartphone } from "lucide-react";
+import { User, Lock, Eye, EyeOff, Mail, ArrowLeft, Smartphone, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const Login = () => {
