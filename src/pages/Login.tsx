@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -6,12 +7,23 @@ import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { User, Lock, Eye, EyeOff, Mail, ArrowLeft, Smartphone, Gamepad, Train } from "lucide-react";
 import { cn } from "@/lib/utils";
+import BackgroundVideo from "@/components/BackgroundVideo";
 
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [showPassword, setShowPassword] = useState(false);
   const [activeTab, setActiveTab] = useState<string>("login");
+  const [videoSource, setVideoSource] = useState<string>("https://cdn.coverr.co/videos/coverr-train-journey-through-scenic-mountains-453/1080p.mp4");
+
+  // Alternate video sources for fallbacks
+  const videoSources = [
+    "https://cdn.coverr.co/videos/coverr-train-journey-through-scenic-mountains-453/1080p.mp4",
+    "https://cdn.coverr.co/videos/coverr-train-passing-through-mountains-5224/1080p.mp4",
+    "https://cdn.coverr.co/videos/coverr-train-moving-through-tunnel-369/1080p.mp4"
+  ];
+
+  const fallbackImage = "https://images.unsplash.com/photo-1474487548417-781cb71495f3?q=80&w=2084&auto=format&fit=crop";
 
   // Extract register parameter from URL if present
   useEffect(() => {
@@ -19,6 +31,10 @@ const Login = () => {
     if (searchParams.get("register") === "true") {
       setActiveTab("register");
     }
+    
+    // Randomly select a video
+    const randomVideo = videoSources[Math.floor(Math.random() * videoSources.length)];
+    setVideoSource(randomVideo);
   }, [location]);
 
   const togglePasswordVisibility = () => {
@@ -26,29 +42,18 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 relative overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-4 -left-4 w-24 h-24 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-        <div className="absolute top-0 -right-4 w-24 h-24 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
-        <div className="absolute -bottom-8 left-20 w-24 h-24 bg-pink-400 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+    <div className="min-h-screen flex flex-col relative overflow-hidden bg-[#0a0e17]">
+      {/* Background Elements */}
+      <BackgroundVideo src={videoSource} opacity={0.7} fallbackImage={fallbackImage} />
+      
+      {/* Animated railtrack */}
+      <div className="absolute bottom-0 left-0 right-0 h-10 overflow-hidden">
+        <div className="train-track w-full h-4 absolute bottom-2"></div>
+        <div className="train-animation"></div>
       </div>
-
-      {/* Video Background */}
-      <div className="absolute inset-0 z-0">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="w-full h-full object-cover opacity-20"
-        >
-          <source src="https://cdn.coverr.co/videos/coverr-train-passing-through-mountains-5224/1080p.mp4" type="video/mp4" />
-        </video>
-      </div>
-
+      
       <div className="container mx-auto px-4 md:px-6 py-8 relative z-10">
-        <Link to="/" className="inline-flex items-center text-irctc-gray-text hover:text-irctc-blue transition-colors mb-8">
+        <Link to="/" className="inline-flex items-center text-white hover:text-[#FF7B54] transition-colors mb-8">
           <ArrowLeft className="h-4 w-4 mr-2" />
           Back to Home
         </Link>
@@ -57,72 +62,72 @@ const Login = () => {
           <div className="w-full max-w-md">
             <div className="text-center mb-8">
               <div className="flex items-center justify-center mb-6">
-                <Train className="h-8 w-8 text-irctc-blue mr-2 animate-float" />
-                <span className="text-3xl font-bold text-irctc-blue">IRCTC</span>
-                <span className="ml-1 text-sm text-irctc-gray-text italic mt-1">Redesigned</span>
+                <Train className="h-8 w-8 text-[#FF7B54] mr-2 animate-float" />
+                <span className="text-3xl font-bold text-white">IRCTC</span>
+                <span className="ml-1 text-sm text-gray-300 italic mt-1">Redesigned</span>
               </div>
-              <h1 className="text-3xl md:text-4xl font-bold mb-4 text-gradient bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600">
+              <h1 className="text-3xl md:text-4xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-[#FF7B54] to-[#FFB26B]">
                 {activeTab === "login" ? "Welcome Back" : "Create Account"}
               </h1>
-              <p className="text-irctc-gray-text">
+              <p className="text-gray-300">
                 {activeTab === "login" 
                   ? "Log in to your account to manage your train tickets and bookings."
                   : "Sign up for a new account to start booking train tickets easily."}
               </p>
             </div>
             
-            <Card className="p-6 shadow-medium border-none animate-scale-in overflow-hidden backdrop-blur-sm bg-white/80">
+            <Card className="p-6 shadow-glow-blue border-none animate-scale-in overflow-hidden backdrop-blur-md bg-black/40 border border-white/10">
               <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-                <TabsList className="grid grid-cols-2 mb-6">
-                  <TabsTrigger value="login" className="rounded-lg">Login</TabsTrigger>
-                  <TabsTrigger value="register" className="rounded-lg">Register</TabsTrigger>
+                <TabsList className="grid grid-cols-2 mb-6 bg-[#1F2937] text-white">
+                  <TabsTrigger value="login" className="data-[state=active]:bg-[#FF7B54] data-[state=active]:text-white rounded-lg">Login</TabsTrigger>
+                  <TabsTrigger value="register" className="data-[state=active]:bg-[#FF7B54] data-[state=active]:text-white rounded-lg">Register</TabsTrigger>
                 </TabsList>
                 
                 <TabsContent value="login" className="mt-0">
                   <form className="space-y-5">
                     <div>
-                      <label className="block text-sm font-medium text-irctc-gray-text mb-1">
+                      <label className="block text-sm font-medium text-gray-300 mb-1">
                         Username or Email
                       </label>
                       <div className="relative">
                         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                          <User className="h-5 w-5 text-irctc-gray-text" />
+                          <User className="h-5 w-5 text-gray-400" />
                         </div>
                         <Input 
                           type="text" 
                           placeholder="Enter your username or email" 
-                          className="form-input pl-10"
+                          className="form-input pl-10 bg-[#1F2937] border-[#374151] text-white placeholder:text-gray-500"
                         />
                       </div>
                     </div>
                     
                     <div>
                       <div className="flex items-center justify-between mb-1">
-                        <label className="block text-sm font-medium text-irctc-gray-text">
+                        <label className="block text-sm font-medium text-gray-300">
                           Password
                         </label>
-                        <Link to="#" className="text-xs text-irctc-blue hover:underline">
+                        <Link to="#" className="text-xs text-[#FFB26B] hover:underline">
                           Forgot Password?
                         </Link>
                       </div>
                       <div className="relative">
                         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                          <Lock className="h-5 w-5 text-irctc-gray-text" />
+                          <Lock className="h-5 w-5 text-gray-400" />
                         </div>
                         <Input 
                           type={showPassword ? "text" : "password"} 
                           placeholder="Enter your password" 
-                          className="form-input pl-10 pr-10"
+                          className="form-input pl-10 pr-10 bg-[#1F2937] border-[#374151] text-white placeholder:text-gray-500"
                         />
                         <button
                           type="button"
-                          className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                          className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-300"
                           onClick={togglePasswordVisibility}
                         >
                           {showPassword ? (
-                            <EyeOff className="h-5 w-5 text-irctc-gray-text" />
+                            <EyeOff className="h-5 w-5" />
                           ) : (
-                            <Eye className="h-5 w-5 text-irctc-gray-text" />
+                            <Eye className="h-5 w-5" />
                           )}
                         </button>
                       </div>
@@ -132,24 +137,24 @@ const Login = () => {
                       <input
                         type="checkbox"
                         id="remember"
-                        className="h-4 w-4 text-irctc-blue rounded border-irctc-gray focus:ring-irctc-blue"
+                        className="h-4 w-4 text-[#FF7B54] rounded border-[#374151] focus:ring-[#FF7B54] bg-[#1F2937]"
                       />
-                      <label htmlFor="remember" className="ml-2 block text-sm text-irctc-gray-text">
+                      <label htmlFor="remember" className="ml-2 block text-sm text-gray-300">
                         Remember me
                       </label>
                     </div>
                     
-                    <Button type="submit" className="w-full h-12 bg-irctc-blue hover:bg-irctc-blue-dark text-white rounded-xl font-medium transition-all">
+                    <Button type="submit" className="w-full h-12 bg-[#FF7B54] hover:bg-[#FF6B41] text-white rounded-xl font-medium transition-all">
                       Sign In
                     </Button>
                     
                     <div className="relative flex items-center justify-center">
-                      <div className="absolute inset-y-1/2 left-0 right-0 h-px bg-irctc-gray"></div>
-                      <span className="relative px-4 bg-white text-sm text-irctc-gray-text">or continue with</span>
+                      <div className="absolute inset-y-1/2 left-0 right-0 h-px bg-gray-700"></div>
+                      <span className="relative px-4 bg-black/40 text-sm text-gray-400">or continue with</span>
                     </div>
                     
                     <div className="grid grid-cols-2 gap-4">
-                      <Button variant="outline" className="border-irctc-gray h-11 rounded-xl">
+                      <Button variant="outline" className="border-gray-700 h-11 rounded-xl bg-[#1F2937]/70 text-white hover:bg-[#1F2937]">
                         <svg className="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
                           <path d="M22.56,12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26,1.37-1.04,2.53-2.21,3.31v2.77h3.57C21.08,18.3,22.56,15.57,22.56,12.25Z" fill="#4285F4"/>
                           <path d="M12,23c2.97,0,5.46-.98,7.28-2.66l-3.57-2.77c-.99.66-2.26,1.06-3.71,1.06-2.86,0-5.29-1.93-6.16-4.53H2.18v2.84C3.99,20.53,7.7,23,12,23Z" fill="#34A853"/>
@@ -158,19 +163,19 @@ const Login = () => {
                         </svg>
                         Google
                       </Button>
-                      <Button variant="outline" className="border-irctc-gray h-11 rounded-xl">
+                      <Button variant="outline" className="border-gray-700 h-11 rounded-xl bg-[#1F2937]/70 text-white hover:bg-[#1F2937]">
                         <svg className="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96C15.9 21.59 18.03 20.33 19.6 18.43C21.16 16.53 22 14.08 22 11.56C22 6.53 17.5 2.04 12 2.04Z" />
+                          <path d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96C15.9 21.59 18.03 20.33 19.6 18.43C21.16 16.53 22 14.08 22 11.56C22 6.53 17.5 2.04 12 2.04Z" fill="#1877F2"/>
                         </svg>
                         Facebook
                       </Button>
                     </div>
                     
-                    <p className="text-center text-sm text-irctc-gray-text">
+                    <p className="text-center text-sm text-gray-400">
                       Don't have an account?{" "}
                       <button
                         type="button"
-                        className="text-irctc-blue hover:underline font-medium"
+                        className="text-[#FFB26B] hover:underline font-medium"
                         onClick={() => setActiveTab("register")}
                       >
                         Register Now
@@ -183,85 +188,85 @@ const Login = () => {
                   <form className="space-y-5">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm font-medium text-irctc-gray-text mb-1">
+                        <label className="block text-sm font-medium text-gray-300 mb-1">
                           First Name
                         </label>
                         <Input 
                           type="text" 
                           placeholder="Enter your first name" 
-                          className="form-input"
+                          className="form-input bg-[#1F2937] border-[#374151] text-white placeholder:text-gray-500"
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-irctc-gray-text mb-1">
+                        <label className="block text-sm font-medium text-gray-300 mb-1">
                           Last Name
                         </label>
                         <Input 
                           type="text" 
                           placeholder="Enter your last name" 
-                          className="form-input"
+                          className="form-input bg-[#1F2937] border-[#374151] text-white placeholder:text-gray-500"
                         />
                       </div>
                     </div>
                     
                     <div>
-                      <label className="block text-sm font-medium text-irctc-gray-text mb-1">
+                      <label className="block text-sm font-medium text-gray-300 mb-1">
                         Email Address
                       </label>
                       <div className="relative">
                         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                          <Mail className="h-5 w-5 text-irctc-gray-text" />
+                          <Mail className="h-5 w-5 text-gray-400" />
                         </div>
                         <Input 
                           type="email" 
                           placeholder="Enter your email address" 
-                          className="form-input pl-10"
+                          className="form-input pl-10 bg-[#1F2937] border-[#374151] text-white placeholder:text-gray-500"
                         />
                       </div>
                     </div>
                     
                     <div>
-                      <label className="block text-sm font-medium text-irctc-gray-text mb-1">
+                      <label className="block text-sm font-medium text-gray-300 mb-1">
                         Mobile Number
                       </label>
                       <div className="relative">
                         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                          <Smartphone className="h-5 w-5 text-irctc-gray-text" />
+                          <Smartphone className="h-5 w-5 text-gray-400" />
                         </div>
                         <Input 
                           type="tel" 
                           placeholder="Enter your mobile number" 
-                          className="form-input pl-10"
+                          className="form-input pl-10 bg-[#1F2937] border-[#374151] text-white placeholder:text-gray-500"
                         />
                       </div>
                     </div>
                     
                     <div>
-                      <label className="block text-sm font-medium text-irctc-gray-text mb-1">
+                      <label className="block text-sm font-medium text-gray-300 mb-1">
                         Password
                       </label>
                       <div className="relative">
                         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                          <Lock className="h-5 w-5 text-irctc-gray-text" />
+                          <Lock className="h-5 w-5 text-gray-400" />
                         </div>
                         <Input 
                           type={showPassword ? "text" : "password"} 
                           placeholder="Create a password" 
-                          className="form-input pl-10 pr-10"
+                          className="form-input pl-10 pr-10 bg-[#1F2937] border-[#374151] text-white placeholder:text-gray-500"
                         />
                         <button
                           type="button"
-                          className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                          className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-300"
                           onClick={togglePasswordVisibility}
                         >
                           {showPassword ? (
-                            <EyeOff className="h-5 w-5 text-irctc-gray-text" />
+                            <EyeOff className="h-5 w-5" />
                           ) : (
-                            <Eye className="h-5 w-5 text-irctc-gray-text" />
+                            <Eye className="h-5 w-5" />
                           )}
                         </button>
                       </div>
-                      <p className="text-xs text-irctc-gray-text mt-1">
+                      <p className="text-xs text-gray-400 mt-1">
                         Password must be at least 8 characters long with a number and a special character.
                       </p>
                     </div>
@@ -270,29 +275,29 @@ const Login = () => {
                       <input
                         type="checkbox"
                         id="terms"
-                        className="h-4 w-4 text-irctc-blue rounded border-irctc-gray focus:ring-irctc-blue"
+                        className="h-4 w-4 text-[#FF7B54] rounded border-[#374151] focus:ring-[#FF7B54] bg-[#1F2937]"
                       />
-                      <label htmlFor="terms" className="ml-2 block text-sm text-irctc-gray-text">
+                      <label htmlFor="terms" className="ml-2 block text-sm text-gray-300">
                         I agree to the{" "}
-                        <Link to="#" className="text-irctc-blue hover:underline">
+                        <Link to="#" className="text-[#FFB26B] hover:underline">
                           Terms of Service
                         </Link>{" "}
                         and{" "}
-                        <Link to="#" className="text-irctc-blue hover:underline">
+                        <Link to="#" className="text-[#FFB26B] hover:underline">
                           Privacy Policy
                         </Link>
                       </label>
                     </div>
                     
-                    <Button type="submit" className="w-full h-12 bg-irctc-blue hover:bg-irctc-blue-dark text-white rounded-xl font-medium transition-all">
+                    <Button type="submit" className="w-full h-12 bg-[#FF7B54] hover:bg-[#FF6B41] text-white rounded-xl font-medium transition-all">
                       Create Account
                     </Button>
                     
-                    <p className="text-center text-sm text-irctc-gray-text">
+                    <p className="text-center text-sm text-gray-400">
                       Already have an account?{" "}
                       <button
                         type="button"
-                        className="text-irctc-blue hover:underline font-medium"
+                        className="text-[#FFB26B] hover:underline font-medium"
                         onClick={() => setActiveTab("login")}
                       >
                         Sign In
@@ -303,33 +308,43 @@ const Login = () => {
               </Tabs>
             </Card>
 
-            {/* Game Section */}
-            <div className="mt-8 text-center">
-              <h3 className="text-lg font-semibold mb-4 text-irctc-blue flex items-center justify-center">
+            {/* Train-themed Game Section with Image */}
+            <div className="mt-8 rounded-xl bg-black/30 backdrop-blur-sm p-4 border border-gray-800 shadow-glow-blue">
+              <h3 className="text-lg font-semibold mb-4 text-[#FFB26B] flex items-center justify-center">
                 <Gamepad className="mr-2" />
                 While You Wait
               </h3>
               <div className="grid grid-cols-2 gap-4">
                 <Button
                   variant="outline"
-                  className="p-4 h-auto bg-white/80 backdrop-blur-sm hover:bg-white/90 transition-all duration-300"
+                  className="p-4 h-auto bg-[#1F2937]/70 hover:bg-[#1F2937] transition-all duration-300 border-gray-700 text-white"
                   onClick={() => window.open('https://www.gamearter.com/game/train-simulator', '_blank')}
                 >
                   <div className="text-left">
                     <div className="font-medium">Train Simulator</div>
-                    <div className="text-sm text-gray-500">Drive virtual trains</div>
+                    <div className="text-sm text-gray-400">Drive virtual trains</div>
                   </div>
                 </Button>
                 <Button
                   variant="outline"
-                  className="p-4 h-auto bg-white/80 backdrop-blur-sm hover:bg-white/90 transition-all duration-300"
+                  className="p-4 h-auto bg-[#1F2937]/70 hover:bg-[#1F2937] transition-all duration-300 border-gray-700 text-white"
                   onClick={() => window.open('https://www.gamearter.com/game/traffic-manager', '_blank')}
                 >
                   <div className="text-left">
                     <div className="font-medium">Traffic Manager</div>
-                    <div className="text-sm text-gray-500">Control train traffic</div>
+                    <div className="text-sm text-gray-400">Control train traffic</div>
                   </div>
                 </Button>
+              </div>
+              <div className="mt-4 rounded-lg overflow-hidden shadow-md relative h-32">
+                <img 
+                  src="https://images.unsplash.com/photo-1695834331711-a0ae1e1e6521?q=80&w=2070&auto=format&fit=crop" 
+                  alt="Train locomotive"
+                  className="w-full h-full object-cover transition-transform hover:scale-105 duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-3">
+                  <p className="text-white text-sm">Experience the thrill of train journeys</p>
+                </div>
               </div>
             </div>
           </div>
@@ -340,4 +355,3 @@ const Login = () => {
 };
 
 export default Login;
-
