@@ -70,13 +70,13 @@ const Navbar = () => {
               </button>
               <div className="absolute top-full left-0 mt-2 w-48 bg-white shadow-medium rounded-xl overflow-hidden opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2">
                 <div className="py-2 px-3">
-                  <Link to="#" className="block py-2 px-3 hover:bg-irctc-gray rounded-lg transition-colors">
+                  <Link to="/trains/search?query=pnr" className="block py-2 px-3 hover:bg-irctc-gray rounded-lg transition-colors">
                     PNR Status
                   </Link>
-                  <Link to="#" className="block py-2 px-3 hover:bg-irctc-gray rounded-lg transition-colors">
+                  <Link to="/trains/search?query=fare" className="block py-2 px-3 hover:bg-irctc-gray rounded-lg transition-colors">
                     Fare Enquiry
                   </Link>
-                  <Link to="#" className="block py-2 px-3 hover:bg-irctc-gray rounded-lg transition-colors">
+                  <Link to="/trains/track" className="block py-2 px-3 hover:bg-irctc-gray rounded-lg transition-colors">
                     Train Schedule
                   </Link>
                 </div>
@@ -150,13 +150,13 @@ const Navbar = () => {
               </Link>
               <div className="border-t border-irctc-gray pt-4 mt-2">
                 <p className="text-irctc-gray-text text-sm mb-3 px-4">Services</p>
-                <Link to="#" className="px-4 py-2 block text-irctc-black hover:bg-irctc-gray rounded-lg">
+                <Link to="/trains/search?query=pnr" className="px-4 py-2 block text-irctc-black hover:bg-irctc-gray rounded-lg" onClick={() => setIsMenuOpen(false)}>
                   PNR Status
                 </Link>
-                <Link to="#" className="px-4 py-2 block text-irctc-black hover:bg-irctc-gray rounded-lg">
+                <Link to="/trains/search?query=fare" className="px-4 py-2 block text-irctc-black hover:bg-irctc-gray rounded-lg" onClick={() => setIsMenuOpen(false)}>
                   Fare Enquiry
                 </Link>
-                <Link to="#" className="px-4 py-2 block text-irctc-black hover:bg-irctc-gray rounded-lg">
+                <Link to="/trains/track" className="px-4 py-2 block text-irctc-black hover:bg-irctc-gray rounded-lg" onClick={() => setIsMenuOpen(false)}>
                   Train Schedule
                 </Link>
               </div>
