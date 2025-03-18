@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { 
@@ -148,7 +147,7 @@ const Index = () => {
                 
                 <div className="flex items-center gap-2">
                   <div className="h-8 w-8 rounded-full bg-blue-50 flex items-center justify-center">
-                    <Shield className="h-4 w-4 text-blue-500" />
+                    <ShieldCheck className="h-4 w-4 text-blue-500" />
                   </div>
                   <div>
                     <p className="font-semibold">Secure Payments</p>
