@@ -91,15 +91,15 @@ const Index = () => {
   ];
 
   return (
-    <div className="page-transition min-h-screen flex flex-col">
+    <div className="page-transition min-h-screen flex flex-col bg-gradient-to-b from-gray-900 via-gray-800 to-black text-white">
       <Navbar />
       
-      {/* Hero Section with animated elements */}
-      <section className="pt-32 pb-20 relative overflow-hidden">
-        {/* Animated background elements */}
-        <div className="absolute inset-0 z-0 pattern-dots bg-dots-md opacity-60"></div>
-        <div className="absolute top-20 right-20 w-64 h-64 shape-blob opacity-30 animate-blob-morphing"></div>
-        <div className="absolute bottom-20 left-20 w-48 h-48 shape-blob opacity-20 animate-blob-morphing"></div>
+      {/* Hero Section with Video Background */}
+      <section className="pt-32 pb-20 relative overflow-hidden min-h-screen">
+        <BackgroundVideo 
+          src="https://assets.mixkit.co/videos/preview/mixkit-passenger-train-moving-through-mountain-landscape-34537-large.mp4" 
+          opacity={0.7}
+        />
         
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="flex flex-col md:flex-row gap-12 items-center">
@@ -257,10 +257,61 @@ const Index = () => {
           </div>
         </div>
         
-        {/* Train track animation at bottom */}
-        <div className="absolute bottom-0 left-0 right-0">
+        {/* Animated train track */}
+        <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-r from-irctc-blue to-blue-600">
           <div className="train-track">
             <div className="train-animation"></div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Live Train Map Section */}
+      <section className="py-20 relative overflow-hidden bg-gradient-to-b from-gray-900 to-black">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
+              Live Train Tracking
+            </h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
+              Watch trains move in real-time across the Indian railway network
+            </p>
+          </div>
+          <LiveTrainMap />
+        </div>
+      </section>
+      
+      {/* Interactive Journey Showcase */}
+      <section className="py-20 relative overflow-hidden">
+        <BackgroundVideo 
+          src="https://assets.mixkit.co/videos/preview/mixkit-traveling-through-a-city-by-train-at-night-34559-large.mp4"
+          opacity={0.3}
+        />
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
+                Experience Journey Like Never Before
+              </h2>
+              <p className="text-gray-300 text-lg">
+                Immerse yourself in a revolutionary way of train travel with our cutting-edge booking platform.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Link to="/trains/search">
+                  <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105">
+                    Start Your Journey
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
+            <div className="relative">
+              <img 
+                src="https://images.unsplash.com/photo-1581245657713-875e736a675e?w=800&auto=format&fit=crop&q=60"
+                alt="Luxury Train Interior"
+                className="rounded-2xl shadow-2xl transform -rotate-3 hover:rotate-0 transition-all duration-500"
+              />
+              <div className="absolute -bottom-4 -right-4 h-24 w-24 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full blur-2xl opacity-60"></div>
+            </div>
           </div>
         </div>
       </section>
