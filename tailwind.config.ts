@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -181,7 +180,21 @@ export default {
 					'100%': {
 						borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%'
 					}
-				}
+				},
+				blob: {
+					"0%": {
+						transform: "translate(0px, 0px) scale(1)",
+					},
+					"33%": {
+						transform: "translate(30px, -50px) scale(1.1)",
+					},
+					"66%": {
+						transform: "translate(-20px, 20px) scale(0.9)",
+					},
+					"100%": {
+						transform: "translate(0px, 0px) scale(1)",
+					},
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
@@ -194,7 +207,8 @@ export default {
 				'float': 'float 6s ease-in-out infinite',
 				'train-move': 'train-move 15s linear infinite',
 				'shimmer': 'shimmer 2s ease-in-out infinite',
-				'blob-morphing': 'blob-morphing 25s ease-in-out infinite'
+				'blob-morphing': 'blob-morphing 25s ease-in-out infinite',
+				blob: "blob 7s infinite",
 			},
 			boxShadow: {
 				'soft': '0 2px 15px rgba(0, 0, 0, 0.03)',
@@ -210,6 +224,7 @@ export default {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 				'gradient-dots': 'radial-gradient(rgba(0, 87, 255, 0.1) 2px, transparent 2px)',
 				'shimmer': 'linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%)',
+				'text-gradient': 'linear-gradient(to right, var(--tw-gradient-stops))',
 			},
 			backgroundSize: {
 				'dots-sm': '20px 20px',

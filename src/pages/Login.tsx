@@ -4,13 +4,12 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { User, Lock, Eye, EyeOff, Mail, ArrowLeft, Smartphone, ArrowRight } from "lucide-react";
+import { User, Lock, Eye, EyeOff, Mail, ArrowLeft, Smartphone, Gamepad, Train } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [isRegister, setIsRegister] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [activeTab, setActiveTab] = useState<string>("login");
 
@@ -27,21 +26,42 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-b from-white to-irctc-blue-light/30">
-      <div className="container mx-auto px-4 md:px-6 py-8">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-4 -left-4 w-24 h-24 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+        <div className="absolute top-0 -right-4 w-24 h-24 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+        <div className="absolute -bottom-8 left-20 w-24 h-24 bg-pink-400 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+      </div>
+
+      {/* Video Background */}
+      <div className="absolute inset-0 z-0">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover opacity-20"
+        >
+          <source src="https://cdn.coverr.co/videos/coverr-train-passing-through-mountains-5224/1080p.mp4" type="video/mp4" />
+        </video>
+      </div>
+
+      <div className="container mx-auto px-4 md:px-6 py-8 relative z-10">
         <Link to="/" className="inline-flex items-center text-irctc-gray-text hover:text-irctc-blue transition-colors mb-8">
           <ArrowLeft className="h-4 w-4 mr-2" />
           Back to Home
         </Link>
 
-        <div className="flex flex-col lg:flex-row items-center justify-center gap-12 py-8">
-          <div className="lg:w-1/2 max-w-md">
-            <div className="text-center lg:text-left mb-8">
-              <div className="flex items-center justify-center lg:justify-start mb-6">
+        <div className="flex flex-col items-center justify-center gap-12 py-8">
+          <div className="w-full max-w-md">
+            <div className="text-center mb-8">
+              <div className="flex items-center justify-center mb-6">
+                <Train className="h-8 w-8 text-irctc-blue mr-2 animate-float" />
                 <span className="text-3xl font-bold text-irctc-blue">IRCTC</span>
                 <span className="ml-1 text-sm text-irctc-gray-text italic mt-1">Redesigned</span>
               </div>
-              <h1 className="text-3xl md:text-4xl font-bold mb-4">
+              <h1 className="text-3xl md:text-4xl font-bold mb-4 text-gradient bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600">
                 {activeTab === "login" ? "Welcome Back" : "Create Account"}
               </h1>
               <p className="text-irctc-gray-text">
@@ -51,7 +71,7 @@ const Login = () => {
               </p>
             </div>
             
-            <Card className="p-6 shadow-medium border-none animate-scale-in overflow-hidden">
+            <Card className="p-6 shadow-medium border-none animate-scale-in overflow-hidden backdrop-blur-sm bg-white/80">
               <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
                 <TabsList className="grid grid-cols-2 mb-6">
                   <TabsTrigger value="login" className="rounded-lg">Login</TabsTrigger>
@@ -282,88 +302,35 @@ const Login = () => {
                 </TabsContent>
               </Tabs>
             </Card>
-          </div>
-          
-          {/* Right Side Illustration */}
-          <div className="lg:w-1/2 hidden lg:block">
-            <div className="relative">
-              <div className="bg-white rounded-2xl shadow-xl p-8 max-w-md mx-auto relative z-10">
-                <div className="bg-irctc-blue text-white p-6 rounded-xl mb-6">
-                  <div className="flex justify-between items-center mb-4">
-                    <div>
-                      <p className="text-sm opacity-80">Boarding From</p>
-                      <p className="font-medium">New Delhi</p>
-                    </div>
-                    <ArrowRight className="h-5 w-5 mx-4" />
-                    <div>
-                      <p className="text-sm opacity-80">Destination</p>
-                      <p className="font-medium">Mumbai Central</p>
-                    </div>
+
+            {/* Game Section */}
+            <div className="mt-8 text-center">
+              <h3 className="text-lg font-semibold mb-4 text-irctc-blue flex items-center justify-center">
+                <Gamepad className="mr-2" />
+                While You Wait
+              </h3>
+              <div className="grid grid-cols-2 gap-4">
+                <Button
+                  variant="outline"
+                  className="p-4 h-auto bg-white/80 backdrop-blur-sm hover:bg-white/90 transition-all duration-300"
+                  onClick={() => window.open('https://www.gamearter.com/game/train-simulator', '_blank')}
+                >
+                  <div className="text-left">
+                    <div className="font-medium">Train Simulator</div>
+                    <div className="text-sm text-gray-500">Drive virtual trains</div>
                   </div>
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <p className="text-sm opacity-80">Date</p>
-                      <p className="font-medium">22 Jul, 2023</p>
-                    </div>
-                    <div>
-                      <p className="text-sm opacity-80">Passengers</p>
-                      <p className="font-medium">2 Adults</p>
-                    </div>
+                </Button>
+                <Button
+                  variant="outline"
+                  className="p-4 h-auto bg-white/80 backdrop-blur-sm hover:bg-white/90 transition-all duration-300"
+                  onClick={() => window.open('https://www.gamearter.com/game/traffic-manager', '_blank')}
+                >
+                  <div className="text-left">
+                    <div className="font-medium">Traffic Manager</div>
+                    <div className="text-sm text-gray-500">Control train traffic</div>
                   </div>
-                </div>
-                
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <p className="font-semibold text-lg">Rajdhani Express</p>
-                      <p className="text-sm text-irctc-gray-text">Train No. 12951</p>
-                    </div>
-                    <div className="bg-irctc-blue-light/40 text-irctc-blue text-xs font-medium px-2.5 py-1 rounded">
-                      E-Ticket
-                    </div>
-                  </div>
-                  
-                  <div className="flex justify-between">
-                    <div>
-                      <p className="text-2xl font-semibold">16:35</p>
-                      <p className="text-sm text-irctc-gray-text">NDLS</p>
-                    </div>
-                    <div className="flex flex-col items-center justify-center px-4">
-                      <div className="text-xs text-irctc-gray-text-light">15h 35m</div>
-                      <div className="relative w-20 my-2">
-                        <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-irctc-gray-dark"></div>
-                        <div className="absolute top-1/2 left-0 w-2 h-2 rounded-full bg-irctc-blue transform -translate-y-1/2"></div>
-                        <div className="absolute top-1/2 right-0 w-2 h-2 rounded-full bg-irctc-blue transform -translate-y-1/2"></div>
-                      </div>
-                      <div className="text-xs text-irctc-gray-text-light">Non-stop</div>
-                    </div>
-                    <div>
-                      <p className="text-2xl font-semibold">08:10</p>
-                      <p className="text-sm text-irctc-gray-text">CSMT</p>
-                    </div>
-                  </div>
-                  
-                  <div className="border-t border-b border-irctc-gray py-4 my-2">
-                    <div className="flex justify-between mb-2">
-                      <p className="text-sm text-irctc-gray-text">Coach & Seat</p>
-                      <p className="font-medium">A1 - 24, 25</p>
-                    </div>
-                    <div className="flex justify-between">
-                      <p className="text-sm text-irctc-gray-text">PNR Number</p>
-                      <p className="font-medium">4528167390</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex justify-between">
-                    <p className="text-sm text-irctc-gray-text">Amount Paid</p>
-                    <p className="font-semibold">₹3,240</p>
-                  </div>
-                </div>
+                </Button>
               </div>
-              
-              {/* Decorative elements */}
-              <div className="absolute -bottom-8 -right-8 h-32 w-32 bg-irctc-blue-light rounded-full -z-10"></div>
-              <div className="absolute -top-8 -left-8 h-24 w-24 bg-irctc-blue opacity-10 rounded-full -z-10"></div>
             </div>
           </div>
         </div>
@@ -373,3 +340,4 @@ const Login = () => {
 };
 
 export default Login;
+
