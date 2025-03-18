@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { 
@@ -100,7 +99,7 @@ const Index = () => {
       {/* Hero Section with Video Background */}
       <section className="pt-32 pb-20 relative overflow-hidden min-h-screen">
         <BackgroundVideo 
-          src="https://assets.mixkit.co/videos/preview/mixkit-passenger-train-moving-through-mountain-landscape-34537-large.mp4" 
+          src="https://video-previews.elements.envatousercontent.com/h264-video-previews/d1c81d2f-849f-4668-ba48-c5e26805ce5d/41654805.mp4" 
           opacity={0.7}
         />
         
@@ -268,7 +267,7 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Live Train Map Section */}
+      {/* Live Train Map Section with enhanced styling */}
       <section className="py-20 relative overflow-hidden bg-gradient-to-b from-gray-900 to-black">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-12">
@@ -283,10 +282,10 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Interactive Journey Showcase */}
+      {/* Interactive Journey Showcase with new video */}
       <section className="py-20 relative overflow-hidden">
         <BackgroundVideo 
-          src="https://assets.mixkit.co/videos/preview/mixkit-traveling-through-a-city-by-train-at-night-34559-large.mp4"
+          src="https://video-previews.elements.envatousercontent.com/h264-video-previews/8f657d6b-b5c0-42c2-b6b1-874a11a9da91/42090393.mp4"
           opacity={0.3}
         />
         <div className="container mx-auto px-4 md:px-6 relative z-10">
