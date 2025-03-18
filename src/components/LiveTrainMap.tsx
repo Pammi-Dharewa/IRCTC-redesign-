@@ -75,8 +75,10 @@ const LiveTrainMap = () => {
         marker.innerHTML = '🚂';
         marker.style.fontSize = '24px';
 
+        // Fix: Use proper LngLatLike format by destructuring the array coordinates
+        const [lng, lat] = route.coordinates[0];
         new mapboxgl.Marker(marker)
-          .setLngLat(route.coordinates[0])
+          .setLngLat([lng, lat]) // Now correctly passing as [number, number]
           .addTo(map.current);
       });
 
