@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Link } from "react-router-dom";
 import { 
@@ -12,6 +13,8 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
+import BackgroundVideo from "@/components/BackgroundVideo";
+import LiveTrainMap from "@/components/LiveTrainMap";
 import { 
   Train, 
   Search, 
