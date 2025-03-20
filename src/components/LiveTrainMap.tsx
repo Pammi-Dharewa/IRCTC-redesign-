@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Card } from '@/components/ui/card';
-import { TrainVisualization } from './TrainVisualization';
+import TrainVisualization from './TrainVisualization';
 
 const LiveTrainMap = () => {
   // Define train routes that were previously used with Mapbox
