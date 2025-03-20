@@ -267,6 +267,55 @@ const Index = () => {
         </div>
       </section>
       
+      {/* Featured Video Section */}
+      <section className="py-20 relative overflow-hidden bg-gray-900">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="text-center mb-10">
+            <span className="inline-block text-sm font-medium text-irctc-blue bg-irctc-blue-light px-4 py-1 rounded-full">
+              Featured Video
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-3 bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
+              Experience the Journey
+            </h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
+              Take a virtual tour of our luxury train experience across India's scenic routes
+            </p>
+          </div>
+          
+          <div className="max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-2xl relative">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent z-10 pointer-events-none"></div>
+            
+            <BackgroundVideo 
+              src="https://video-previews.elements.envatousercontent.com/h264-video-previews/5651bbd2-7202-4c01-a03a-64f95fdedf2f/40824818.mp4"
+              position="relative"
+              zIndex={0}
+              opacity={0}
+              overlay={false}
+              controls={true}
+              className="w-full aspect-video"
+            />
+            
+            <div className="absolute bottom-6 left-6 z-20">
+              <div className="bg-black/50 backdrop-blur-sm px-4 py-2 rounded-lg">
+                <h3 className="text-white font-semibold">Maharaja Express: A Royal Journey</h3>
+                <p className="text-gray-300 text-sm">Experience luxury train travel like never before</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="mt-8 flex justify-center gap-4 flex-wrap">
+            <Button className="bg-blue-600 hover:bg-blue-700">
+              <PlayCircle className="mr-2 h-4 w-4" />
+              Watch More Videos
+            </Button>
+            <Button variant="outline" className="border-blue-500 text-blue-500 hover:bg-blue-900/20">
+              Book a Luxury Trip
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </div>
+        </div>
+      </section>
+      
       {/* Live Train Map Section with enhanced styling */}
       <section className="py-20 relative overflow-hidden bg-gradient-to-b from-gray-900 to-black">
         <div className="container mx-auto px-4 md:px-6">
@@ -594,3 +643,4 @@ const Index = () => {
 };
 
 export default Index;
+

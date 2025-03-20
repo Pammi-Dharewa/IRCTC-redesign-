@@ -5,9 +5,31 @@ interface BackgroundVideoProps {
   src: string;
   opacity?: number;
   fallbackImage?: string;
+  overlay?: boolean;
+  overlayColor?: string;
+  position?: 'absolute' | 'relative';
+  zIndex?: number;
+  muted?: boolean;
+  controls?: boolean;
+  autoPlay?: boolean;
+  loop?: boolean;
+  className?: string;
 }
 
-const BackgroundVideo = ({ src, opacity = 0.5, fallbackImage }: BackgroundVideoProps) => {
+const BackgroundVideo = ({ 
+  src, 
+  opacity = 0.5, 
+  fallbackImage,
+  overlay = true,
+  overlayColor = "from-black/40 via-black/60 to-black/80",
+  position = 'absolute',
+  zIndex = -10,
+  muted = true,
+  controls = false,
+  autoPlay = true,
+  loop = true,
+  className = ""
+}: BackgroundVideoProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
@@ -50,11 +72,13 @@ const BackgroundVideo = ({ src, opacity = 0.5, fallbackImage }: BackgroundVideoP
   }, [fallbackImage]);
 
   return (
-    <div className="absolute inset-0 -z-10 overflow-hidden">
-      <div 
-        className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black/80 z-10"
-        style={{ opacity }}
-      />
+    <div className={`${position} inset-0 overflow-hidden ${className}`} style={{ zIndex }}>
+      {overlay && (
+        <div 
+          className={`absolute inset-0 bg-gradient-to-b ${overlayColor} z-10`}
+          style={{ opacity }}
+        />
+      )}
       
       {/* Fallback image if video fails or while loading */}
       {(hasError || !isLoaded) && fallbackImage && (
@@ -71,9 +95,10 @@ const BackgroundVideo = ({ src, opacity = 0.5, fallbackImage }: BackgroundVideoP
       
       <video
         ref={videoRef}
-        autoPlay
-        loop
-        muted
+        autoPlay={autoPlay}
+        loop={loop}
+        muted={muted}
+        controls={controls}
         playsInline
         className={`w-full h-full object-cover scale-105 transform transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
       >
