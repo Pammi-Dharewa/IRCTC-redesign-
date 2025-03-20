@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { User, Lock, Eye, EyeOff, Mail, ArrowLeft, Smartphone, Gamepad, Train } from "lucide-react";
+import { User, Lock, Eye, EyeOff, Mail, ArrowLeft, Smartphone, Train } from "lucide-react";
 import { cn } from "@/lib/utils";
 import BackgroundVideo from "@/components/BackgroundVideo";
 
@@ -307,46 +307,6 @@ const Login = () => {
                 </TabsContent>
               </Tabs>
             </Card>
-
-            {/* Train-themed Game Section with Image */}
-            <div className="mt-8 rounded-xl bg-black/30 backdrop-blur-sm p-4 border border-gray-800 shadow-glow-blue">
-              <h3 className="text-lg font-semibold mb-4 text-[#FFB26B] flex items-center justify-center">
-                <Gamepad className="mr-2" />
-                While You Wait
-              </h3>
-              <div className="grid grid-cols-2 gap-4">
-                <Button
-                  variant="outline"
-                  className="p-4 h-auto bg-[#1F2937]/70 hover:bg-[#1F2937] transition-all duration-300 border-gray-700 text-white"
-                  onClick={() => window.open('https://www.gamearter.com/game/train-simulator', '_blank')}
-                >
-                  <div className="text-left">
-                    <div className="font-medium">Train Simulator</div>
-                    <div className="text-sm text-gray-400">Drive virtual trains</div>
-                  </div>
-                </Button>
-                <Button
-                  variant="outline"
-                  className="p-4 h-auto bg-[#1F2937]/70 hover:bg-[#1F2937] transition-all duration-300 border-gray-700 text-white"
-                  onClick={() => window.open('https://www.gamearter.com/game/traffic-manager', '_blank')}
-                >
-                  <div className="text-left">
-                    <div className="font-medium">Traffic Manager</div>
-                    <div className="text-sm text-gray-400">Control train traffic</div>
-                  </div>
-                </Button>
-              </div>
-              <div className="mt-4 rounded-lg overflow-hidden shadow-md relative h-32">
-                <img 
-                  src="https://images.unsplash.com/photo-1695834331711-a0ae1e1e6521?q=80&w=2070&auto=format&fit=crop" 
-                  alt="Train locomotive"
-                  className="w-full h-full object-cover transition-transform hover:scale-105 duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-3">
-                  <p className="text-white text-sm">Experience the thrill of train journeys</p>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
