@@ -27,15 +27,15 @@
     --ring: 212.7 26.8% 83.9%;
     --radius: 0.75rem;
     
-    /* IRCTC theme colors */
+    /* IRCTC theme colors - updated to blue */
     --sidebar-background: 222 47% 11%;
     --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 24 95% 64%;
+    --sidebar-primary: 220 100% 50%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 220 14% 24%;
     --sidebar-accent-foreground: 210 40% 98%;
     --sidebar-border: 220 14% 20%;
-    --sidebar-ring: 24 95% 64%;
+    --sidebar-ring: 220 100% 50%;
   }
 
   .light {
@@ -107,13 +107,13 @@
   }
   
   .btn-primary {
-    @apply px-6 py-3 bg-[#FF7B54] text-white rounded-xl font-medium shadow-sm 
-    hover:shadow-md hover:bg-[#FF6B41] transition-all duration-300 inline-flex items-center gap-2;
+    @apply px-6 py-3 bg-[#0057FF] text-white rounded-xl font-medium shadow-sm 
+    hover:shadow-md hover:bg-[#003DB3] transition-all duration-300 inline-flex items-center gap-2;
   }
   
   .btn-secondary {
-    @apply px-6 py-3 bg-[#FF7B54]/20 text-[#FF7B54] rounded-xl font-medium shadow-sm 
-    hover:shadow-md hover:bg-[#FF7B54]/30 transition-all duration-300 inline-flex items-center gap-2;
+    @apply px-6 py-3 bg-[#0057FF]/20 text-[#0057FF] rounded-xl font-medium shadow-sm 
+    hover:shadow-md hover:bg-[#0057FF]/30 transition-all duration-300 inline-flex items-center gap-2;
   }
   
   .btn-ghost {
@@ -181,3 +181,6 @@ html {
 .text-gradient-orange {
   @apply text-transparent bg-clip-text bg-gradient-to-r from-[#FF7B54] to-[#FFB26B];
 }
+
+/*
+
