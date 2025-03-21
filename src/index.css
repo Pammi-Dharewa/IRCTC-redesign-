@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,13 +6,13 @@
 
 @layer base {
   :root {
-    --background: 222 47% 11%;
+    --background: 225 25% 14%;
     --foreground: 210 40% 98%;
-    --card: 222 47% 11%;
+    --card: 225 25% 14%;
     --card-foreground: 210 40% 98%;
-    --popover: 222 47% 11%;
+    --popover: 225 25% 14%;
     --popover-foreground: 210 40% 98%;
-    --primary: 217 91% 60%;
+    --primary: 0 84% 71%;
     --primary-foreground: 210 40% 98%;
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
@@ -27,10 +27,10 @@
     --ring: 212.7 26.8% 83.9%;
     --radius: 0.75rem;
     
-    /* IRCTC theme colors - updated to modern blue */
-    --sidebar-background: 222 47% 11%;
+    /* Updated theme colors to a unique palette */
+    --sidebar-background: 225 25% 14%;
     --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary: 0 84% 71%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 220 14% 24%;
     --sidebar-accent-foreground: 210 40% 98%;
@@ -40,15 +40,15 @@
 
   .light {
     --background: 0 0% 100%;
-    --foreground: 222 11% 16%;
+    --foreground: 225 25% 14%;
     --card: 0 0% 100%;
-    --card-foreground: 222 11% 16%;
+    --card-foreground: 225 25% 14%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222 11% 16%;
-    --primary: 217 91% 60%;
+    --popover-foreground: 225 25% 14%;
+    --primary: 0 84% 71%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 223 100% 96%;
-    --secondary-foreground: 217 91% 60%;
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 225 25% 14%;
     --muted: 210 20% 97%;
     --muted-foreground: 215 16% 47%;
     --accent: 210 40% 97%;
@@ -57,7 +57,7 @@
     --destructive-foreground: 210 40% 98%;
     --border: 214.3 32% 91%;
     --input: 214.3 32% 91%;
-    --ring: 217 91% 60%;
+    --ring: 0 84% 71%;
   }
 }
 
@@ -78,6 +78,7 @@
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-medium tracking-tight;
+    font-family: 'Syne', sans-serif;
   }
 
   h1 {
@@ -108,33 +109,33 @@
   }
   
   .btn-primary {
-    @apply px-6 py-3 bg-[#3B82F6] text-white rounded-xl font-medium shadow-sm 
-    hover:shadow-md hover:bg-[#2563EB] transition-all duration-300 inline-flex items-center gap-2;
+    @apply px-6 py-3 bg-[#FF6B6B] text-white rounded-xl font-medium shadow-sm 
+    hover:shadow-md hover:bg-[#FF5252] transition-all duration-300 inline-flex items-center gap-2;
   }
   
   .btn-secondary {
-    @apply px-6 py-3 bg-[#3B82F6]/20 text-[#3B82F6] rounded-xl font-medium shadow-sm 
-    hover:shadow-md hover:bg-[#3B82F6]/30 transition-all duration-300 inline-flex items-center gap-2;
+    @apply px-6 py-3 bg-[#FF6B6B]/20 text-[#FF6B6B] rounded-xl font-medium shadow-sm 
+    hover:shadow-md hover:bg-[#FF6B6B]/30 transition-all duration-300 inline-flex items-center gap-2;
   }
   
   .btn-ghost {
-    @apply px-6 py-3 bg-transparent text-irctc-gray-text rounded-xl font-medium 
-    hover:bg-irctc-gray hover:text-irctc-black transition-all duration-300 inline-flex items-center gap-2;
+    @apply px-6 py-3 bg-transparent text-gray-300 rounded-xl font-medium 
+    hover:bg-gray-800 hover:text-white transition-all duration-300 inline-flex items-center gap-2;
   }
   
   .nav-link {
-    @apply px-3 py-2 text-irctc-gray-text hover:text-irctc-black transition-all duration-200 
+    @apply px-3 py-2 text-gray-300 hover:text-white transition-all duration-200 
     relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:rounded-full 
-    after:bg-[#3B82F6] after:origin-left after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300;
+    after:bg-[#FF6B6B] after:origin-left after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300;
   }
   
   .nav-link.active {
-    @apply text-irctc-black after:scale-x-100;
+    @apply text-white after:scale-x-100;
   }
   
   .form-input {
     @apply w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:ring-2 
-    focus:ring-[#3B82F6] focus:border-transparent transition-all duration-200;
+    focus:ring-[#FF6B6B] focus:border-transparent transition-all duration-200;
   }
   
   .card-hover {
@@ -146,7 +147,7 @@
   }
   
   .modern-gradient-bg {
-    @apply bg-gradient-to-br from-[#0f172a] to-[#1e293b];
+    @apply bg-gradient-to-br from-[#1A1A2E] to-[#30305A];
   }
   
   .glass-morphism {
@@ -157,8 +158,8 @@
     @apply backdrop-blur-2xl bg-black/40 border border-white/10;
   }
   
-  .text-gradient-blue {
-    @apply text-transparent bg-clip-text bg-gradient-to-r from-[#3B82F6] to-[#60A5FA];
+  .text-gradient-red {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B6B] to-[#FFD166];
   }
 }
 
@@ -261,9 +262,9 @@ html {
   animation: float 5s ease-in-out infinite;
 }
 
-/* Glow effect for blue buttons */
-.shadow-glow-blue {
-  box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+/* Glow effect for red buttons */
+.shadow-glow-red {
+  box-shadow: 0 0 20px rgba(255, 107, 107, 0.4);
 }
 
 /* Gradient animations */
@@ -299,4 +300,38 @@ html {
 
 .animate-blob {
   animation: blob-morph 8s ease-in-out infinite;
+}
+
+/* New animations for ticket booking section */
+@keyframes ticket-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(255, 107, 107, 0);
+  }
+}
+
+.ticket-pulse {
+  animation: ticket-pulse 2s infinite;
+}
+
+/* Ticket booking form styles */
+.ticket-form-input {
+  @apply bg-[#2A2A42] border border-[#4A4A6A] rounded-lg px-4 py-3 text-white placeholder:text-gray-400
+  focus:ring-2 focus:ring-[#FF6B6B] focus:border-transparent transition-all duration-300;
+}
+
+.ticket-form-select {
+  @apply bg-[#2A2A42] border border-[#4A4A6A] rounded-lg px-4 py-3 text-white
+  focus:ring-2 focus:ring-[#FF6B6B] focus:border-transparent transition-all duration-300;
+}
+
+.ticket-form-label {
+  @apply text-sm font-medium text-gray-300 mb-1 block;
+}
+
+/* Gradient text for headings */
+.text-gradient-sunset {
+  @apply text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B6B] via-[#FFD166] to-[#FF6B6B];
 }

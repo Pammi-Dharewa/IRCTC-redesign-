@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -19,7 +20,8 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+				sans: ['Plus Jakarta Sans', 'sans-serif'],
+				heading: ['Syne', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -66,14 +68,17 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				irctc: {
-					blue: '#3B82F6',
-					"blue-light": '#E5EEFF',
-					"blue-dark": '#1D4ED8',
-					gray: '#F4F5F7',
-					"gray-dark": '#EAECF0',
-					"gray-text": '#667085',
-					"gray-text-light": '#94A3B8',
-					"black": '#1D2432',
+					red: '#FF6B6B',
+					"red-light": '#FFEEEE',
+					"red-dark": '#FF5252',
+					yellow: '#FFD166',
+					teal: '#4ECDC4',
+					purple: '#6C63FF',
+					dark: '#1A1A2E',
+					"dark-medium": '#2A2A42',
+					"dark-light": '#30305A',
+					"gray-text": '#9999AA',
+					"gray-text-light": '#B5B5C5',
 				}
 			},
 			borderRadius: {
