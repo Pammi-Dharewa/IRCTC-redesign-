@@ -1,3 +1,4 @@
+
 import React from "react";
 import { ArrowRight, Clock, CalendarDays, TrendingUp, MapPin, Zap, Train, Shield } from "lucide-react";
 import { Card } from "@/components/ui/card";
@@ -71,13 +72,13 @@ const TrainCard = ({
   onCheckFare,
   className,
 }: TrainCardProps) => {
-  // Modern gradient combinations
+  // Generate a random gradient for each train card to make them visually distinct
   const gradients = [
-    "from-[#0057FF] via-[#0EA5E9] to-[#00FF57]",
-    "from-[#FF5700] via-[#FF8C00] to-[#FFD700]",
-    "from-[#9C27B0] via-[#E91E63] to-[#FF5722]",
-    "from-[#00BCD4] via-[#03A9F4] to-[#2196F3]",
-    "from-[#4CAF50] via-[#8BC34A] to-[#CDDC39]"
+    "from-purple-500 to-pink-500",
+    "from-blue-500 to-cyan-500",
+    "from-amber-500 to-orange-600",
+    "from-green-500 to-teal-500",
+    "from-rose-500 to-red-500"
   ];
   
   const randomGradient = gradients[Math.floor(Math.random() * gradients.length)];
@@ -85,43 +86,43 @@ const TrainCard = ({
   return (
     <Card 
       className={cn(
-        "overflow-hidden transition-all duration-500 hover:shadow-xl border-none relative group bg-white/5 backdrop-blur-sm",
+        "overflow-hidden transition-all duration-300 hover:shadow-medium border-none relative group",
         className
       )}
     >
-      {/* Modern gradient header with glow effect */}
-      <div className={`h-1 w-full bg-gradient-to-r ${randomGradient} opacity-80 shadow-lg shadow-[#0057FF]/20`}></div>
+      {/* Decorative header strip with gradient */}
+      <div className={`h-2 w-full bg-gradient-to-r ${randomGradient}`}></div>
       
       <div className="p-6 relative">
-        {/* Modern decorative elements */}
+        {/* Train illustration decorative element */}
         <div className="absolute top-0 right-0 opacity-5 pointer-events-none">
           <Train size={120} strokeWidth={1} />
         </div>
         
-        {/* Modern gradient track */}
-        <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+        {/* Modern train track decorative element */}
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-irctc-gray-dark opacity-10"></div>
         
-        {/* Train Info with modern styling */}
+        {/* Train Info */}
         <div className="flex flex-col md:flex-row justify-between md:items-center mb-6 relative z-10">
           <div>
-            <div className="flex items-center gap-2 mb-2">
-              <span className={`bg-gradient-to-r ${randomGradient} text-white text-xs font-medium px-3 py-1 rounded-full shadow-lg shadow-[#0057FF]/20`}>
+            <div className="flex items-center gap-2 mb-1">
+              <span className={`bg-gradient-to-r ${randomGradient} text-white text-xs font-medium px-3 py-1 rounded-full`}>
                 {trainNumber}
               </span>
-              <h3 className="font-semibold text-lg md:text-xl bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">{trainName}</h3>
+              <h3 className="font-semibold text-lg md:text-xl">{trainName}</h3>
             </div>
-            <div className="flex items-center text-white/70 text-sm gap-4 mt-1">
+            <div className="flex items-center text-irctc-gray-text text-sm gap-4 mt-1">
               <div className="flex items-center gap-1">
-                <CalendarDays className="h-4 w-4 text-[#0057FF]" />
+                <CalendarDays className="h-4 w-4" />
                 <span>{date}</span>
               </div>
               <div className="flex items-center gap-1">
-                <TrendingUp className="h-4 w-4 text-[#00FF57]" />
+                <TrendingUp className="h-4 w-4" />
                 <span>Daily</span>
               </div>
               <div className="flex items-center gap-1">
-                <Shield className="h-4 w-4 text-[#FF5700]" />
-                <span className="text-[#FF5700] font-medium">Superfast</span>
+                <Shield className="h-4 w-4 text-green-500" />
+                <span className="text-green-500 font-medium">Superfast</span>
               </div>
             </div>
           </div>
@@ -129,7 +130,7 @@ const TrainCard = ({
             <Button 
               variant="outline" 
               size="sm" 
-              className="rounded-xl border-[#0057FF] text-[#0057FF] hover:bg-[#0057FF]/10 group-hover:translate-x-1 transition-all duration-300"
+              className="rounded-xl border-irctc-blue text-irctc-blue hover:bg-irctc-blue-light group-hover:translate-x-1 transition-all"
               onClick={onCheckFare}
             >
               Check Fare
@@ -137,7 +138,7 @@ const TrainCard = ({
             <Button 
               variant="default" 
               size="sm" 
-              className={`rounded-xl bg-gradient-to-r ${randomGradient} hover:opacity-90 group-hover:scale-105 transition-all duration-300 shadow-lg shadow-[#0057FF]/20`}
+              className={`rounded-xl bg-gradient-to-r ${randomGradient} hover:opacity-90 group-hover:scale-105 transition-all`}
               onClick={onBook}
             >
               Book Now
@@ -145,77 +146,77 @@ const TrainCard = ({
           </div>
         </div>
 
-        {/* Journey Details with modern glassmorphism */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between mb-6 bg-white/5 backdrop-blur-sm p-4 rounded-xl border border-white/10 shadow-lg">
+        {/* Journey Details with enhanced visual design */}
+        <div className="flex flex-col md:flex-row md:items-center justify-between mb-6 bg-gradient-to-r from-gray-50 to-white p-4 rounded-xl border border-gray-100 shadow-sm">
           <div className="flex items-center gap-6 md:gap-12">
-            {/* Departure with modern styling */}
+            {/* Departure with enhanced styling */}
             <div className="relative">
-              <div className="absolute -left-2 top-1/2 w-4 h-4 rounded-full bg-gradient-to-r from-[#0057FF] to-[#0EA5E9] transform -translate-y-1/2 animate-pulse-gentle shadow-lg shadow-[#0057FF]/20"></div>
-              <p className="text-2xl font-semibold ml-4 text-white">{departureTime}</p>
+              <div className="absolute -left-2 top-1/2 w-4 h-4 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 transform -translate-y-1/2 animate-pulse-gentle"></div>
+              <p className="text-2xl font-semibold ml-4">{departureTime}</p>
               <div className="flex items-center gap-1 mt-1 ml-4">
-                <MapPin className="h-4 w-4 text-white/70" />
-                <p className="text-sm text-white/70">{from}</p>
+                <MapPin className="h-4 w-4 text-irctc-gray-text" />
+                <p className="text-sm text-irctc-gray-text">{from}</p>
               </div>
             </div>
 
-            {/* Duration with modern animated track */}
+            {/* Duration with animated train track */}
             <div className="flex flex-col items-center">
-              <div className="text-xs font-medium text-[#0057FF] bg-[#0057FF]/10 rounded-full px-3 py-0.5">
+              <div className="text-xs font-medium text-irctc-blue bg-irctc-blue-light rounded-full px-3 py-0.5">
                 {duration}
               </div>
               <div className="relative w-24 my-2">
-                <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-white/10"></div>
-                <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-[#0057FF] to-[#0EA5E9] animate-pulse-gentle"></div>
+                <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-irctc-blue-light"></div>
+                <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-irctc-blue to-blue-500 animate-pulse-gentle"></div>
                 
-                {/* Modern animated train */}
+                {/* Animated mini train */}
                 <div className="absolute top-1/2 left-0 transform -translate-y-1/2 animate-[train-move_15s_linear_infinite]">
-                  <div className="h-2 w-2 bg-[#0057FF] rounded-full shadow-lg shadow-[#0057FF]/20"></div>
+                  <div className="h-2 w-2 bg-irctc-blue rounded-full"></div>
                 </div>
               </div>
-              <div className="text-xs text-white/50">Direct</div>
+              <div className="text-xs text-irctc-gray-text-light">Direct</div>
             </div>
 
-            {/* Arrival with modern styling */}
+            {/* Arrival with enhanced styling */}
             <div className="relative">
-              <div className="absolute -left-2 top-1/2 w-4 h-4 rounded-full bg-gradient-to-r from-[#FF5700] to-[#FF8C00] transform -translate-y-1/2 animate-pulse-gentle shadow-lg shadow-[#FF5700]/20"></div>
-              <p className="text-2xl font-semibold ml-4 text-white">{arrivalTime}</p>
+              <div className="absolute -left-2 top-1/2 w-4 h-4 rounded-full bg-gradient-to-r from-red-500 to-pink-500 transform -translate-y-1/2 animate-pulse-gentle"></div>
+              <p className="text-2xl font-semibold ml-4">{arrivalTime}</p>
               <div className="flex items-center gap-1 mt-1 ml-4">
-                <MapPin className="h-4 w-4 text-white/70" />
-                <p className="text-sm text-white/70">{to}</p>
+                <MapPin className="h-4 w-4 text-irctc-gray-text" />
+                <p className="text-sm text-irctc-gray-text">{to}</p>
               </div>
             </div>
           </div>
 
-          <div className="hidden md:flex items-center text-white/70 text-sm gap-4 mt-6 md:mt-0">
+          <div className="hidden md:flex items-center text-irctc-gray-text text-sm gap-4 mt-6 md:mt-0">
             <div className="flex items-center gap-1">
-              <Zap className="h-4 w-4 text-[#00FF57]" />
+              <Zap className="h-4 w-4 text-irctc-blue" />
               <span>Fastest Route</span>
             </div>
           </div>
         </div>
 
-        {/* Availability with modern glassmorphism */}
-        <div className="space-y-2">
-          <p className="text-xs font-medium mb-2 flex items-center text-white/70">
-            <span className="bg-[#0057FF]/10 text-[#0057FF] text-xs font-medium px-1.5 py-0.5 rounded mr-2">
+        {/* Availability with enhanced visual design */}
+        <div className="mt-4">
+          <p className="text-sm font-medium mb-3 flex items-center">
+            <span className="bg-irctc-blue-light text-irctc-blue text-xs font-medium px-2 py-0.5 rounded mr-2">
               Seats
             </span>
             Availability
           </p>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
             {availability.map((item, index) => (
               <div
                 key={index}
                 className={cn(
-                  "border border-white/10 rounded-md p-2 flex flex-col transition-all duration-300 hover:shadow-lg hover:shadow-[#0057FF]/10 group/seat bg-white/5 backdrop-blur-sm", 
-                  item.status === "available" ? "hover:border-[#00FF57]/50" : "hover:border-white/20"
+                  "border rounded-lg p-3 flex flex-col transition-all hover:shadow-sm group/seat", 
+                  item.status === "available" ? "border-green-200" : "border-irctc-gray"
                 )}
               >
-                <div className="flex justify-between items-center mb-1">
-                  <span className="text-xs font-medium text-white/90">{item.class}</span>
-                  <span className="text-xs font-medium text-[#0057FF] group-hover/seat:scale-110 transition-transform">₹{item.fare}</span>
+                <div className="flex justify-between items-center mb-2">
+                  <span className="font-medium">{item.class}</span>
+                  <span className="text-sm font-medium text-irctc-blue group-hover/seat:scale-110 transition-transform">₹{item.fare}</span>
                 </div>
-                <div className={cn("text-[10px] px-1.5 py-0.5 rounded-md font-medium flex items-center justify-center", getStatusColor(item.status))}>
+                <div className={cn("text-xs px-2 py-1 rounded-md mt-1 font-medium flex items-center justify-center", getStatusColor(item.status))}>
                   {getStatusText(item.status, item.available)}
                 </div>
               </div>

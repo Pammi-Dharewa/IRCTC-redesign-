@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
@@ -198,4 +199,51 @@ html {
 
 .responsive-flex {
   @apply flex flex-col md:flex-row items-center gap-4 md:gap-6;
+}
+
+/* Animation for the train icon */
+@keyframes train-move {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(4px);
+  }
+}
+
+.animate-train-move {
+  animation: train-move 0.5s ease-in-out infinite alternate;
+}
+
+/* Animation for gentle pulse */
+@keyframes pulse-gentle {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-pulse-gentle {
+  animation: pulse-gentle 2s ease-in-out infinite;
+}
+
+/* Animation for floating elements */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+/* Glow effect for blue buttons */
+.shadow-glow-blue {
+  box-shadow: 0 0 15px rgba(10, 77, 166, 0.3);
 }
