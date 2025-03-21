@@ -53,38 +53,38 @@ const Login = () => {
       </div>
       
       <div className="container mx-auto px-4 md:px-6 py-8 relative z-10">
-        <Link to="/" className="inline-flex items-center text-white hover:text-[#FF7B54] transition-colors mb-8">
+        <Link to="/" className="inline-flex items-center text-white hover:text-[#2179DE] transition-colors mb-8">
           <ArrowLeft className="h-4 w-4 mr-2" />
           Back to Home
         </Link>
 
-        <div className="flex flex-col items-center justify-center gap-12 py-8">
+        <div className="flex flex-col items-center justify-center gap-8 py-4 md:py-8">
           <div className="w-full max-w-md">
-            <div className="text-center mb-8">
-              <div className="flex items-center justify-center mb-6">
-                <Train className="h-8 w-8 text-[#FF7B54] mr-2 animate-float" />
-                <span className="text-3xl font-bold text-white">IRCTC</span>
-                <span className="ml-1 text-sm text-gray-300 italic mt-1">Redesigned</span>
+            <div className="text-center mb-6 md:mb-8">
+              <div className="flex items-center justify-center mb-4 md:mb-6">
+                <Train className="h-6 w-6 md:h-8 md:w-8 text-[#2179DE] mr-2 animate-float" />
+                <span className="text-2xl md:text-3xl font-bold text-white">IRCTC</span>
+                <span className="ml-1 text-xs md:text-sm text-gray-300 italic mt-1">Redesigned</span>
               </div>
-              <h1 className="text-3xl md:text-4xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-[#FF7B54] to-[#FFB26B]">
+              <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 text-transparent bg-clip-text bg-gradient-to-r from-[#0A4DA6] to-[#2179DE]">
                 {activeTab === "login" ? "Welcome Back" : "Create Account"}
               </h1>
-              <p className="text-gray-300">
+              <p className="text-sm md:text-base text-gray-300 max-w-sm mx-auto">
                 {activeTab === "login" 
                   ? "Log in to your account to manage your train tickets and bookings."
                   : "Sign up for a new account to start booking train tickets easily."}
               </p>
             </div>
             
-            <Card className="p-6 shadow-glow-blue border-none animate-scale-in overflow-hidden backdrop-blur-md bg-black/40 border border-white/10">
+            <Card className="p-4 md:p-6 shadow-glow-blue border-none animate-scale-in overflow-hidden backdrop-blur-md bg-black/40 border border-white/10">
               <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-                <TabsList className="grid grid-cols-2 mb-6 bg-[#1F2937] text-white">
-                  <TabsTrigger value="login" className="data-[state=active]:bg-[#FF7B54] data-[state=active]:text-white rounded-lg">Login</TabsTrigger>
-                  <TabsTrigger value="register" className="data-[state=active]:bg-[#FF7B54] data-[state=active]:text-white rounded-lg">Register</TabsTrigger>
+                <TabsList className="grid grid-cols-2 mb-4 md:mb-6 bg-[#131B2E] text-white">
+                  <TabsTrigger value="login" className="data-[state=active]:bg-[#0A4DA6] data-[state=active]:text-white rounded-lg">Login</TabsTrigger>
+                  <TabsTrigger value="register" className="data-[state=active]:bg-[#0A4DA6] data-[state=active]:text-white rounded-lg">Register</TabsTrigger>
                 </TabsList>
                 
                 <TabsContent value="login" className="mt-0">
-                  <form className="space-y-5">
+                  <form className="space-y-4">
                     <div>
                       <label className="block text-sm font-medium text-gray-300 mb-1">
                         Username or Email
@@ -96,7 +96,7 @@ const Login = () => {
                         <Input 
                           type="text" 
                           placeholder="Enter your username or email" 
-                          className="form-input pl-10 bg-[#1F2937] border-[#374151] text-white placeholder:text-gray-500"
+                          className="form-input pl-10 bg-[#131B2E]/70 border-[#374151] text-white placeholder:text-gray-500"
                         />
                       </div>
                     </div>
@@ -106,7 +106,7 @@ const Login = () => {
                         <label className="block text-sm font-medium text-gray-300">
                           Password
                         </label>
-                        <Link to="#" className="text-xs text-[#FFB26B] hover:underline">
+                        <Link to="#" className="text-xs text-[#2179DE] hover:underline">
                           Forgot Password?
                         </Link>
                       </div>
@@ -117,7 +117,7 @@ const Login = () => {
                         <Input 
                           type={showPassword ? "text" : "password"} 
                           placeholder="Enter your password" 
-                          className="form-input pl-10 pr-10 bg-[#1F2937] border-[#374151] text-white placeholder:text-gray-500"
+                          className="form-input pl-10 pr-10 bg-[#131B2E]/70 border-[#374151] text-white placeholder:text-gray-500"
                         />
                         <button
                           type="button"
@@ -137,14 +137,14 @@ const Login = () => {
                       <input
                         type="checkbox"
                         id="remember"
-                        className="h-4 w-4 text-[#FF7B54] rounded border-[#374151] focus:ring-[#FF7B54] bg-[#1F2937]"
+                        className="h-4 w-4 text-[#0A4DA6] rounded border-[#374151] focus:ring-[#0A4DA6] bg-[#131B2E]"
                       />
                       <label htmlFor="remember" className="ml-2 block text-sm text-gray-300">
                         Remember me
                       </label>
                     </div>
                     
-                    <Button type="submit" className="w-full h-12 bg-[#FF7B54] hover:bg-[#FF6B41] text-white rounded-xl font-medium transition-all">
+                    <Button type="submit" className="w-full h-11 md:h-12 bg-[#0A4DA6] hover:bg-[#083A7F] text-white rounded-xl font-medium transition-all">
                       Sign In
                     </Button>
                     
@@ -153,8 +153,8 @@ const Login = () => {
                       <span className="relative px-4 bg-black/40 text-sm text-gray-400">or continue with</span>
                     </div>
                     
-                    <div className="grid grid-cols-2 gap-4">
-                      <Button variant="outline" className="border-gray-700 h-11 rounded-xl bg-[#1F2937]/70 text-white hover:bg-[#1F2937]">
+                    <div className="grid grid-cols-2 gap-3 md:gap-4">
+                      <Button variant="outline" className="border-gray-700 h-10 md:h-11 rounded-xl bg-[#131B2E]/70 text-white hover:bg-[#131B2E]">
                         <svg className="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
                           <path d="M22.56,12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26,1.37-1.04,2.53-2.21,3.31v2.77h3.57C21.08,18.3,22.56,15.57,22.56,12.25Z" fill="#4285F4"/>
                           <path d="M12,23c2.97,0,5.46-.98,7.28-2.66l-3.57-2.77c-.99.66-2.26,1.06-3.71,1.06-2.86,0-5.29-1.93-6.16-4.53H2.18v2.84C3.99,20.53,7.7,23,12,23Z" fill="#34A853"/>
@@ -163,7 +163,7 @@ const Login = () => {
                         </svg>
                         Google
                       </Button>
-                      <Button variant="outline" className="border-gray-700 h-11 rounded-xl bg-[#1F2937]/70 text-white hover:bg-[#1F2937]">
+                      <Button variant="outline" className="border-gray-700 h-10 md:h-11 rounded-xl bg-[#131B2E]/70 text-white hover:bg-[#131B2E]">
                         <svg className="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
                           <path d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96C15.9 21.59 18.03 20.33 19.6 18.43C21.16 16.53 22 14.08 22 11.56C22 6.53 17.5 2.04 12 2.04Z" fill="#1877F2"/>
                         </svg>
@@ -175,7 +175,7 @@ const Login = () => {
                       Don't have an account?{" "}
                       <button
                         type="button"
-                        className="text-[#FFB26B] hover:underline font-medium"
+                        className="text-[#2179DE] hover:underline font-medium"
                         onClick={() => setActiveTab("register")}
                       >
                         Register Now
@@ -185,8 +185,8 @@ const Login = () => {
                 </TabsContent>
                 
                 <TabsContent value="register" className="mt-0">
-                  <form className="space-y-5">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <form className="space-y-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
                       <div>
                         <label className="block text-sm font-medium text-gray-300 mb-1">
                           First Name
@@ -194,7 +194,7 @@ const Login = () => {
                         <Input 
                           type="text" 
                           placeholder="Enter your first name" 
-                          className="form-input bg-[#1F2937] border-[#374151] text-white placeholder:text-gray-500"
+                          className="form-input bg-[#131B2E]/70 border-[#374151] text-white placeholder:text-gray-500"
                         />
                       </div>
                       <div>
@@ -204,7 +204,7 @@ const Login = () => {
                         <Input 
                           type="text" 
                           placeholder="Enter your last name" 
-                          className="form-input bg-[#1F2937] border-[#374151] text-white placeholder:text-gray-500"
+                          className="form-input bg-[#131B2E]/70 border-[#374151] text-white placeholder:text-gray-500"
                         />
                       </div>
                     </div>
@@ -220,7 +220,7 @@ const Login = () => {
                         <Input 
                           type="email" 
                           placeholder="Enter your email address" 
-                          className="form-input pl-10 bg-[#1F2937] border-[#374151] text-white placeholder:text-gray-500"
+                          className="form-input pl-10 bg-[#131B2E]/70 border-[#374151] text-white placeholder:text-gray-500"
                         />
                       </div>
                     </div>
@@ -236,7 +236,7 @@ const Login = () => {
                         <Input 
                           type="tel" 
                           placeholder="Enter your mobile number" 
-                          className="form-input pl-10 bg-[#1F2937] border-[#374151] text-white placeholder:text-gray-500"
+                          className="form-input pl-10 bg-[#131B2E]/70 border-[#374151] text-white placeholder:text-gray-500"
                         />
                       </div>
                     </div>
@@ -252,7 +252,7 @@ const Login = () => {
                         <Input 
                           type={showPassword ? "text" : "password"} 
                           placeholder="Create a password" 
-                          className="form-input pl-10 pr-10 bg-[#1F2937] border-[#374151] text-white placeholder:text-gray-500"
+                          className="form-input pl-10 pr-10 bg-[#131B2E]/70 border-[#374151] text-white placeholder:text-gray-500"
                         />
                         <button
                           type="button"
@@ -275,21 +275,21 @@ const Login = () => {
                       <input
                         type="checkbox"
                         id="terms"
-                        className="h-4 w-4 text-[#FF7B54] rounded border-[#374151] focus:ring-[#FF7B54] bg-[#1F2937]"
+                        className="h-4 w-4 text-[#0A4DA6] rounded border-[#374151] focus:ring-[#0A4DA6] bg-[#131B2E]"
                       />
                       <label htmlFor="terms" className="ml-2 block text-sm text-gray-300">
                         I agree to the{" "}
-                        <Link to="#" className="text-[#FFB26B] hover:underline">
+                        <Link to="#" className="text-[#2179DE] hover:underline">
                           Terms of Service
                         </Link>{" "}
                         and{" "}
-                        <Link to="#" className="text-[#FFB26B] hover:underline">
+                        <Link to="#" className="text-[#2179DE] hover:underline">
                           Privacy Policy
                         </Link>
                       </label>
                     </div>
                     
-                    <Button type="submit" className="w-full h-12 bg-[#FF7B54] hover:bg-[#FF6B41] text-white rounded-xl font-medium transition-all">
+                    <Button type="submit" className="w-full h-11 md:h-12 bg-[#0A4DA6] hover:bg-[#083A7F] text-white rounded-xl font-medium transition-all">
                       Create Account
                     </Button>
                     
@@ -297,7 +297,7 @@ const Login = () => {
                       Already have an account?{" "}
                       <button
                         type="button"
-                        className="text-[#FFB26B] hover:underline font-medium"
+                        className="text-[#2179DE] hover:underline font-medium"
                         onClick={() => setActiveTab("login")}
                       >
                         Sign In
