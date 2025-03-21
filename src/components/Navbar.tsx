@@ -55,7 +55,7 @@ const Navbar = () => {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled 
-          ? "bg-gradient-to-r from-[#0f172a]/95 to-[#1e293b]/95 backdrop-blur-md shadow-md py-3" 
+          ? "bg-gradient-to-r from-[#1A1A2E]/95 to-[#30305A]/95 backdrop-blur-md shadow-md py-3" 
           : "bg-transparent py-4 md:py-5"
       )}
     >
@@ -63,10 +63,10 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center">
             <div className="relative">
-              <Train className="h-6 w-6 text-[#3B82F6] mr-2" />
-              <span className="absolute -top-1 -right-1 h-2 w-2 bg-[#3B82F6] rounded-full animate-pulse"></span>
+              <Train className="h-6 w-6 text-[#FF6B6B] mr-2" />
+              <span className="absolute -top-1 -right-1 h-2 w-2 bg-[#FF6B6B] rounded-full animate-pulse"></span>
             </div>
-            <span className="text-xl md:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#3B82F6] to-[#60A5FA]">IRCTC</span>
+            <span className="text-xl md:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B6B] to-[#FFD166]">IRCTC</span>
             <span className="ml-1 text-xs md:text-sm text-gray-300 italic mt-1">Redesigned</span>
           </Link>
 
@@ -83,15 +83,15 @@ const Navbar = () => {
                 <Link
                   to={item.path}
                   className={cn(
-                    "px-3 py-2 text-gray-300 hover:text-[#3B82F6] transition-colors relative",
-                    isActive(item.path) && "text-[#3B82F6] font-medium"
+                    "px-3 py-2 text-gray-300 hover:text-[#FF6B6B] transition-colors relative",
+                    isActive(item.path) && "text-[#FF6B6B] font-medium"
                   )}
                 >
                   {item.label}
                   {isActive(item.path) && (
                     <motion.div
                       layoutId="activeIndicator"
-                      className="absolute bottom-0 left-0 w-full h-[2px] bg-[#3B82F6]"
+                      className="absolute bottom-0 left-0 w-full h-[2px] bg-[#FF6B6B]"
                       initial={false}
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
@@ -102,16 +102,16 @@ const Navbar = () => {
           </motion.nav>
 
           <div className="hidden md:flex items-center space-x-4">
-            <button className="p-2 text-gray-300 hover:text-[#3B82F6] transition-colors">
+            <button className="p-2 text-gray-300 hover:text-[#FF6B6B] transition-colors">
               <Search className="h-5 w-5" />
             </button>
             <Link to="/login">
-              <Button variant="outline" className="border-[#3B82F6] text-[#3B82F6] hover:bg-[#3B82F6]/10">
+              <Button variant="outline" className="border-[#FF6B6B] text-[#FF6B6B] hover:bg-[#FF6B6B]/10">
                 Login
               </Button>
             </Link>
             <Link to="/login?register=true">
-              <Button variant="default" className="bg-[#3B82F6] hover:bg-[#2563EB]">
+              <Button variant="default" className="bg-[#FF6B6B] hover:bg-[#FF5252]">
                 Register
               </Button>
             </Link>
@@ -128,7 +128,7 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden mt-4 py-4 space-y-4"
+            className="md:hidden mt-4 py-4 space-y-4 bg-gradient-to-r from-[#1A1A2E]/95 to-[#30305A]/95 backdrop-blur-md rounded-xl border border-[#4A4A6A]/30 shadow-lg"
           >
             {[
               { path: "/", label: "Home" },
@@ -139,22 +139,22 @@ const Navbar = () => {
                 key={item.path}
                 to={item.path}
                 className={cn(
-                  "block px-3 py-2 text-gray-300 hover:text-[#3B82F6]",
-                  isActive(item.path) && "text-[#3B82F6] font-medium"
+                  "block px-6 py-3 text-gray-300 hover:text-[#FF6B6B] hover:bg-[#2A2A42]/70",
+                  isActive(item.path) && "text-[#FF6B6B] font-medium bg-[#2A2A42]/50"
                 )}
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.label}
               </Link>
             ))}
-            <div className="pt-4 border-t border-gray-700 flex items-center space-x-4">
+            <div className="pt-4 border-t border-[#4A4A6A]/30 px-6 flex items-center space-x-4">
               <Link to="/login" className="flex-1">
-                <Button variant="outline" className="w-full border-[#3B82F6] text-[#3B82F6] hover:bg-[#3B82F6]/10">
+                <Button variant="outline" className="w-full border-[#FF6B6B] text-[#FF6B6B] hover:bg-[#FF6B6B]/10">
                   Login
                 </Button>
               </Link>
               <Link to="/login?register=true" className="flex-1">
-                <Button variant="default" className="w-full bg-[#3B82F6] hover:bg-[#2563EB]">
+                <Button variant="default" className="w-full bg-[#FF6B6B] hover:bg-[#FF5252]">
                   Register
                 </Button>
               </Link>
