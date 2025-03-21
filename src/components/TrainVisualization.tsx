@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 
 const TrainVisualization = () => {
@@ -106,9 +105,9 @@ const TrainVisualization = () => {
   }, []);
   
   return (
-    <div className="relative w-full h-[500px] rounded-xl overflow-hidden shadow-xl bg-gradient-to-b from-[#0f172a] to-[#1e293b]">
-      <canvas ref={canvasRef} className="absolute inset-0"></canvas>
-      <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-transparent to-background/10"></div>
+    <div className="relative w-full h-full rounded-xl overflow-hidden shadow-xl bg-[#0f172a]">
+      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full"></canvas>
+      <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-transparent to-[#0a0e17]/50"></div>
     </div>
   );
 };

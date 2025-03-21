@@ -1,6 +1,11 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
+import trainVideo from "../video/trainVideo.mp4";
+import vandeBharat from '../images/vandebharat.jpg';
+import train from '../images/train.jpg';
+import maharaja from '../video/maharaja.mp4';
+import banglore_train from '../images/banglore.jpg'
+
 import { 
   Carousel,
   CarouselContent,
@@ -47,14 +52,6 @@ const Index = () => {
       duration: "15h 35m"
     },
     {
-      from: "Chennai",
-      to: "Bengaluru",
-      image: "https://images.unsplash.com/photo-1511968410168-fb3f1f9a946c?q=80&w=800&auto=format&fit=crop",
-      trainName: "Shatabdi Express",
-      price: "₹950",
-      duration: "6h 15m"
-    },
-    {
       from: "Kolkata",
       to: "Delhi",
       image: "https://images.unsplash.com/photo-1530735606451-8f5f13955328?q=80&w=800&auto=format&fit=crop",
@@ -98,13 +95,15 @@ const Index = () => {
     <div className="page-transition min-h-screen flex flex-col bg-[#0a0e17] text-white">
       <Navbar />
       
-      {/* Hero Section with Video Background - updated with Indian Railway video */}
+      {/* Hero Section with Modern Gradient Background */}
       <section className="pt-32 pb-20 relative overflow-hidden min-h-screen">
-        <BackgroundVideo 
-          src="https://video-previews.elements.envatousercontent.com/h264-video-previews/8f657d6b-b5c0-42c2-b6b1-874a11a9da91/42090393.mp4" 
-          opacity={0.7}
-          fallbackImage="https://images.unsplash.com/photo-1601629665203-f9f2b8d07424?q=80&w=2084&auto=format&fit=crop"
-        />
+        {/* Modern gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0a0e17] via-[#0f172a] to-[#1e293b]">
+          {/* Animated gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0057FF]/10 via-[#0EA5E9]/10 to-[#00FF57]/10 animate-gradient-x"></div>
+          {/* Decorative dots pattern */}
+          {/* <div className="absolute inset-0 opacity-10 pattern-dots bg-dots-sm"></div> */}
+        </div>
         
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="flex flex-col md:flex-row gap-12 items-center">
@@ -114,7 +113,7 @@ const Index = () => {
                 <span>Indian Railways Reimagined</span>
               </div>
               
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#0057FF] to-[#0EA5E9]">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#2255b5] to-[#0EA5E9]">
                 Experience <span className="text-white">Seamless</span> <br className="hidden md:inline" />
                 Railway Journey
               </h1>
@@ -125,13 +124,13 @@ const Index = () => {
               
               <div className="flex flex-wrap gap-4 pt-4">
                 <Link to="/trains/search">
-                  <Button className="h-12 px-6 rounded-xl bg-[#0057FF] hover:bg-[#003DB3] text-white shadow-glow-blue">
+                  <Button className="h-12 px-6 rounded-xl bg-[#164094] hover:bg-[#003DB3] text-white shadow-glow-blue">
                     Book Tickets
                     <ArrowRight className="h-4 w-4 ml-2" />
                   </Button>
                 </Link>
                 <Link to="/trains/track">
-                  <Button variant="outline" className="h-12 px-6 rounded-xl border-[#0057FF] text-[#0057FF] hover:bg-[#0057FF]/10 group">
+                  <Button variant="outline" className="h-12 px-6 rounded-xl border-[#0057FF] text-[#4f7dfd] hover:bg-[#0057FF]/10 group">
                     Track Train
                     <Train className="h-4 w-4 ml-2 group-hover:animate-train-move" />
                   </Button>
@@ -175,12 +174,12 @@ const Index = () => {
             <div className="md:w-1/2 relative">
               {/* Floating train illustration */}
               <div className="absolute -top-16 -right-10 opacity-10 animate-float">
-                <Train size={120} strokeWidth={1} />
+                {/* <Train size={120} strokeWidth={1} /> */}
               </div>
               
               <div className="bg-black/40 backdrop-blur-md rounded-2xl shadow-xl p-6 border border-white/10 animate-fade-in relative overflow-hidden">
                 {/* Decorative blob in the background */}
-                <div className="absolute -bottom-20 -right-20 w-40 h-40 bg-gradient-to-r from-[#0057FF]/20 to-[#0EA5E9]/20 rounded-full opacity-50"></div>
+                {/* <div className="absolute -bottom-20 -right-20 w-40 h-40 bg-gradient-to-r from-[#0057FF]/20 to-[#0EA5E9]/20 rounded-full opacity-50"></div> */}
                 
                 <h3 className="text-xl font-semibold mb-6 flex items-center text-white">
                   <Search className="h-5 w-5 mr-2 text-[#0057FF]" />
@@ -243,7 +242,7 @@ const Index = () => {
                     </div>
                   </div>
                   
-                  <Button className="w-full h-12 bg-[#0057FF] hover:bg-[#003DB3] text-white rounded-xl font-medium transition-all">
+                  <Button className="w-full h-12 bg-[#174dba] hover:bg-[#003DB3] text-white rounded-xl font-medium transition-all">
                     <Search className="h-4 w-4 mr-2" /> Search Trains
                   </Button>
                 </div>
@@ -256,14 +255,14 @@ const Index = () => {
               </div>
               
               {/* Decorative elements */}
-              <div className="absolute -bottom-4 -right-4 h-24 w-24 bg-gradient-to-r from-[#0057FF]/30 to-[#0EA5E9]/30 rounded-full -z-10 animate-pulse-gentle blur-xl"></div>
+              {/* <div className="absolute -bottom-4 -right-4 h-24 w-24 bg-gradient-to-r from-[#0057FF]/30 to-[#0EA5E9]/30 rounded-full -z-10 animate-pulse-gentle blur-xl"></div> */}
               <div className="absolute -top-4 -left-4 h-16 w-16 bg-gradient-to-r from-[#0057FF]/20 to-[#0EA5E9]/20 rounded-full -z-10 blur-lg"></div>
             </div>
           </div>
         </div>
         
         {/* Animated train track */}
-        <div className="absolute bottom-0 left-0 right-0 h-8 bg-[#0057FF]">
+        <div className="absolute bottom-0 left-0 right-0 h-3 bg-[#3280f5]">
           <div className="train-track">
             <div className="train-animation"></div>
           </div>
@@ -289,7 +288,7 @@ const Index = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent z-10 pointer-events-none"></div>
             
             <BackgroundVideo 
-              src="https://video-previews.elements.envatousercontent.com/h264-video-previews/5651bbd2-7202-4c01-a03a-64f95fdedf2f/40824818.mp4"
+              src={maharaja}
               position="relative"
               zIndex={0}
               opacity={0}
@@ -360,8 +359,8 @@ const Index = () => {
             </div>
             <div className="relative">
               <img 
-                src="https://images.unsplash.com/photo-1540103711724-ebf833bde8d1?q=80&w=800&auto=format&fit=crop"
-                alt="Indian Railways Luxury Train"
+                src={vandeBharat}
+                alt="Vande Bharat Express"
                 className="rounded-2xl shadow-2xl transform -rotate-3 hover:rotate-0 transition-all duration-500"
               />
               <div className="absolute -bottom-4 -right-4 h-24 w-24 bg-gradient-to-r from-[#0057FF]/30 to-[#0EA5E9]/30 rounded-full blur-2xl opacity-60"></div>

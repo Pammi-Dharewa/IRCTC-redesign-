@@ -1,16 +1,19 @@
-
 import React, { useState } from "react";
-import { ArrowLeft, Filter, ChevronDown, Train, Zap, MapPin, CalendarDays } from "lucide-react";
+import { ArrowLeft, Filter, ChevronDown, Train, MapPin, CalendarDays, Search } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
 import TrainCard from "@/components/TrainCard";
 
 const TrainList = () => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedClass, setSelectedClass] = useState<string[]>([]);
+  const [selectedPriceRange, setSelectedPriceRange] = useState<string[]>([]);
 
-  // Sample train data with corrected status values to match the TrainSeatAvailability type
+  // Sample train data
   const trains = [
     {
       trainNumber: "12301",
@@ -63,201 +66,181 @@ const TrainList = () => {
   ];
 
   return (
-    <div className="container mx-auto px-4 pt-20 pb-12">
-      {/* Decorative Background */}
-      <div className="absolute top-0 left-0 right-0 h-64 bg-gradient-to-r from-irctc-blue to-blue-400 -z-10"></div>
-      
-      {/* Back button and Search Info */}
-      <div className="relative mb-8">
-        <Card className="p-6 shadow-medium border-none relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-32 h-32 -mt-10 -mr-10 text-irctc-blue-light/20">
-            <Train size={128} strokeWidth={1} />
+    <div className="min-h-screen bg-[#0a0e17]">
+      <div className="container mx-auto px-4 pt-24 pb-12">
+        {/* Header */}
+        <div className="mb-8">
+          <div className="flex items-center justify-between mb-6">
+            <Link to="/" className="inline-flex items-center text-[#0057FF] hover:text-[#003DB3]">
+              <ArrowLeft className="h-4 w-4 mr-2" />
+              Back to Home
+            </Link>
+            <Button 
+              variant="outline" 
+              className="border-[#0057FF] text-[#0057FF] hover:bg-[#0057FF]/10"
+              onClick={() => setIsFilterOpen(!isFilterOpen)}
+            >
+              <Filter className="h-4 w-4 mr-2" />
+              Filters
+              <ChevronDown className={`h-4 w-4 ml-2 transition-transform ${isFilterOpen ? 'rotate-180' : ''}`} />
+            </Button>
           </div>
-          
-          <div className="flex flex-col md:flex-row md:items-center justify-between">
-            <div className="flex items-center mb-4 md:mb-0">
-              <Link to="/">
-                <Button variant="ghost" size="icon" className="mr-2 rounded-full hover:bg-irctc-blue-light">
-                  <ArrowLeft className="h-5 w-5" />
-                </Button>
-              </Link>
-              <div>
-                <div className="flex items-center">
-                  <h1 className="text-2xl font-bold">New Delhi to Mumbai</h1>
-                  <div className="w-12 h-1 ml-2 bg-gradient-to-r from-irctc-blue to-blue-400 rounded-full"></div>
-                </div>
-                <div className="flex items-center mt-1 text-irctc-gray-text gap-3">
-                  <div className="flex items-center">
-                    <CalendarDays className="h-4 w-4 mr-1" />
-                    <span>Mon, 12 Apr</span>
+
+          {/* Search Summary */}
+          <div className="bg-white/5 rounded-lg p-4">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div className="flex items-center gap-4">
+                <div className="flex items-center gap-2">
+                  <MapPin className="h-5 w-5 text-[#0057FF]" />
+                  <div>
+                    <div className="text-white font-medium">New Delhi → Mumbai Central</div>
+                    <div className="text-white/70 text-sm">Mon, 12 Apr 2024</div>
                   </div>
-                  <div className="h-4 w-px bg-irctc-gray-text/30"></div>
-                  <span>3 Passengers</span>
                 </div>
               </div>
-            </div>
-            
-            <div className="flex items-center gap-3">
-              <div className="flex items-center px-3 py-1.5 bg-green-50 text-green-600 rounded-full text-xs font-medium">
-                <Zap className="h-3.5 w-3.5 mr-1" />
-                <span>15 results</span>
-              </div>
-              <Button
-                variant="outline"
-                className="flex items-center gap-2 rounded-xl border-irctc-blue text-irctc-blue"
-                onClick={() => setIsFilterOpen(!isFilterOpen)}
-              >
-                <Filter className="h-4 w-4" />
-                Filters
-                <ChevronDown className={`h-4 w-4 transition-transform ${isFilterOpen ? 'rotate-180' : ''}`} />
-              </Button>
-            </div>
-          </div>
-        </Card>
-      </div>
-
-      {/* Filters */}
-      {isFilterOpen && (
-        <Card className="p-6 mb-8 border-none shadow-medium animate-slide-up">
-          <h3 className="text-lg font-semibold mb-4">Filter Trains</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="space-y-3">
-              <h4 className="font-medium text-irctc-blue flex items-center gap-2">
-                <div className="h-8 w-8 rounded-full bg-irctc-blue-light flex items-center justify-center">
-                  <CalendarDays className="h-4 w-4 text-irctc-blue" />
-                </div>
-                Departure Time
-              </h4>
-              <div className="space-y-2 pl-10">
-                <label className="flex items-center">
-                  <input type="checkbox" className="rounded mr-2 text-irctc-blue" />
-                  <span>Early Morning (00:00 - 06:00)</span>
-                </label>
-                <label className="flex items-center">
-                  <input type="checkbox" className="rounded mr-2 text-irctc-blue" />
-                  <span>Morning (06:00 - 12:00)</span>
-                </label>
-                <label className="flex items-center">
-                  <input type="checkbox" className="rounded mr-2 text-irctc-blue" />
-                  <span>Afternoon (12:00 - 18:00)</span>
-                </label>
-                <label className="flex items-center">
-                  <input type="checkbox" className="rounded mr-2 text-irctc-blue" />
-                  <span>Night (18:00 - 00:00)</span>
-                </label>
+              <div className="text-white/70 text-sm">
+                Showing {trains.length} trains
               </div>
             </div>
-            
-            <div className="space-y-3">
-              <h4 className="font-medium text-irctc-blue flex items-center gap-2">
-                <div className="h-8 w-8 rounded-full bg-irctc-blue-light flex items-center justify-center">
-                  <Train className="h-4 w-4 text-irctc-blue" />
-                </div>
-                Train Classes
-              </h4>
-              <div className="space-y-2 pl-10">
-                <label className="flex items-center">
-                  <input type="checkbox" className="rounded mr-2 text-irctc-blue" />
-                  <span>Sleeper (SL)</span>
-                </label>
-                <label className="flex items-center">
-                  <input type="checkbox" className="rounded mr-2 text-irctc-blue" />
-                  <span>AC 3 Tier (3A)</span>
-                </label>
-                <label className="flex items-center">
-                  <input type="checkbox" className="rounded mr-2 text-irctc-blue" />
-                  <span>AC 2 Tier (2A)</span>
-                </label>
-                <label className="flex items-center">
-                  <input type="checkbox" className="rounded mr-2 text-irctc-blue" />
-                  <span>AC First Class (1A)</span>
-                </label>
-              </div>
-            </div>
-            
-            <div className="space-y-3">
-              <h4 className="font-medium text-irctc-blue flex items-center gap-2">
-                <div className="h-8 w-8 rounded-full bg-irctc-blue-light flex items-center justify-center">
-                  <MapPin className="h-4 w-4 text-irctc-blue" />
-                </div>
-                Journey Duration
-              </h4>
-              <div className="space-y-2 pl-10">
-                <label className="flex items-center">
-                  <input type="checkbox" className="rounded mr-2 text-irctc-blue" />
-                  <span>Less than 12 hours</span>
-                </label>
-                <label className="flex items-center">
-                  <input type="checkbox" className="rounded mr-2 text-irctc-blue" />
-                  <span>12 - 18 hours</span>
-                </label>
-                <label className="flex items-center">
-                  <input type="checkbox" className="rounded mr-2 text-irctc-blue" />
-                  <span>18 - 24 hours</span>
-                </label>
-                <label className="flex items-center">
-                  <input type="checkbox" className="rounded mr-2 text-irctc-blue" />
-                  <span>More than 24 hours</span>
-                </label>
-              </div>
-            </div>
-          </div>
-        </Card>
-      )}
-
-      {/* Train Results */}
-      <div className="space-y-6">
-        <div className="flex items-center justify-between">
-          <p className="text-irctc-gray-text">Showing {trains.length} trains</p>
-          <div className="flex gap-2">
-            <Button variant="outline" size="sm" className="rounded-lg text-xs">
-              Sort by Departure
-            </Button>
-            <Button variant="outline" size="sm" className="rounded-lg text-xs">
-              Sort by Duration
-            </Button>
           </div>
         </div>
-        
-        {trains.map((train, index) => (
-          <TrainCard
-            key={index}
-            trainNumber={train.trainNumber}
-            trainName={train.trainName}
-            from={train.from}
-            to={train.to}
-            departureTime={train.departureTime}
-            arrivalTime={train.arrivalTime}
-            duration={train.duration}
-            date={train.date}
-            availability={train.availability}
-            onBook={() => console.log("Book clicked for", train.trainNumber)}
-            onCheckFare={() => console.log("Check fare clicked for", train.trainNumber)}
-            className="animate-fade-in"
-          />
-        ))}
-      </div>
 
-      {/* Pagination */}
-      <Pagination className="mt-10">
-        <PaginationContent>
-          <PaginationItem>
-            <PaginationPrevious href="#" className="rounded-xl hover:bg-irctc-blue-light hover:text-irctc-blue" />
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink href="#" isActive className="rounded-xl bg-irctc-blue">1</PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink href="#" className="rounded-xl hover:bg-irctc-blue-light hover:text-irctc-blue">2</PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink href="#" className="rounded-xl hover:bg-irctc-blue-light hover:text-irctc-blue">3</PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationNext href="#" className="rounded-xl hover:bg-irctc-blue-light hover:text-irctc-blue" />
-          </PaginationItem>
-        </PaginationContent>
-      </Pagination>
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          {/* Filters Sidebar */}
+          <div className={`lg:col-span-1 space-y-6 ${isFilterOpen ? 'block' : 'hidden lg:block'}`}>
+            <div className="bg-white/5 rounded-lg p-4">
+              <div className="space-y-6">
+                {/* Search Input */}
+                <div className="space-y-2">
+                  <div className="relative">
+                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-white/50" />
+                    <Input
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      placeholder="Search trains..."
+                      className="pl-10 bg-[#0f172a] border-white/10 text-white placeholder:text-white/50 focus:border-[#0057FF]"
+                    />
+                  </div>
+                </div>
+
+                {/* Train Classes */}
+                <div className="space-y-3">
+                  <h4 className="font-medium text-white">Train Classes</h4>
+                  <div className="space-y-2">
+                    {["Sleeper (SL)", "AC 3 Tier (3A)", "AC 2 Tier (2A)", "AC First Class (1A)"].map((cls) => (
+                      <label key={cls} className="flex items-center group cursor-pointer">
+                        <input 
+                          type="checkbox" 
+                          className="rounded mr-2 text-[#0057FF]"
+                          checked={selectedClass.includes(cls)}
+                          onChange={(e) => {
+                            if (e.target.checked) {
+                              setSelectedClass([...selectedClass, cls]);
+                            } else {
+                              setSelectedClass(selectedClass.filter(c => c !== cls));
+                            }
+                          }}
+                        />
+                        <span className="text-white/70 group-hover:text-white">{cls}</span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Price Range */}
+                <div className="space-y-3">
+                  <h4 className="font-medium text-white">Price Range</h4>
+                  <div className="space-y-2">
+                    {[
+                      { label: "Under ₹1000", value: "under_1000" },
+                      { label: "₹1000 - ₹2000", value: "1000_2000" },
+                      { label: "₹2000 - ₹3000", value: "2000_3000" },
+                      { label: "Above ₹3000", value: "above_3000" }
+                    ].map((range) => (
+                      <label key={range.value} className="flex items-center group cursor-pointer">
+                        <input 
+                          type="checkbox" 
+                          className="rounded mr-2 text-[#0057FF]"
+                          checked={selectedPriceRange.includes(range.value)}
+                          onChange={(e) => {
+                            if (e.target.checked) {
+                              setSelectedPriceRange([...selectedPriceRange, range.value]);
+                            } else {
+                              setSelectedPriceRange(selectedPriceRange.filter(r => r !== range.value));
+                            }
+                          }}
+                        />
+                        <span className="text-white/70 group-hover:text-white">{range.label}</span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Train List */}
+          <div className="lg:col-span-3">
+            <div className="space-y-4">
+              <div className="flex items-center justify-end gap-2">
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  className="rounded-lg text-xs border-[#0057FF] text-[#0057FF] hover:bg-[#0057FF]/10"
+                >
+                  Sort by Departure
+                </Button>
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  className="rounded-lg text-xs border-[#0057FF] text-[#0057FF] hover:bg-[#0057FF]/10"
+                >
+                  Sort by Duration
+                </Button>
+              </div>
+              
+              {trains.map((train, index) => (
+                <TrainCard
+                  key={index}
+                  trainNumber={train.trainNumber}
+                  trainName={train.trainName}
+                  from={train.from}
+                  to={train.to}
+                  departureTime={train.departureTime}
+                  arrivalTime={train.arrivalTime}
+                  duration={train.duration}
+                  date={train.date}
+                  availability={train.availability}
+                  onBook={() => console.log("Book clicked for", train.trainNumber)}
+                  onCheckFare={() => console.log("Check fare clicked for", train.trainNumber)}
+                  className="animate-fade-in"
+                />
+              ))}
+            </div>
+
+            {/* Pagination */}
+            <Pagination className="mt-8">
+              <PaginationContent>
+                <PaginationItem>
+                  <PaginationPrevious href="#" className="rounded-xl hover:bg-[#0057FF]/10 hover:text-[#0057FF]" />
+                </PaginationItem>
+                <PaginationItem>
+                  <PaginationLink href="#" isActive className="rounded-xl bg-[#0057FF]">1</PaginationLink>
+                </PaginationItem>
+                <PaginationItem>
+                  <PaginationLink href="#" className="rounded-xl hover:bg-[#0057FF]/10 hover:text-[#0057FF]">2</PaginationLink>
+                </PaginationItem>
+                <PaginationItem>
+                  <PaginationLink href="#" className="rounded-xl hover:bg-[#0057FF]/10 hover:text-[#0057FF]">3</PaginationLink>
+                </PaginationItem>
+                <PaginationItem>
+                  <PaginationNext href="#" className="rounded-xl hover:bg-[#0057FF]/10 hover:text-[#0057FF]" />
+                </PaginationItem>
+              </PaginationContent>
+            </Pagination>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

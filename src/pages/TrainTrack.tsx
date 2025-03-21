@@ -1,11 +1,11 @@
-
 import React, { useState } from "react";
-import { Search, Train, Clock, MapPin, Calendar } from "lucide-react";
+import { Search, Train, Clock, MapPin, Calendar, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Table, TableHeader, TableBody, TableHead, TableRow, TableCell } from "@/components/ui/table";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Link } from "react-router-dom";
 
 const TrainTrack = () => {
   const [trainNumber, setTrainNumber] = useState("");
@@ -133,10 +133,18 @@ const TrainTrack = () => {
   return (
     <div className="container mx-auto px-4 pt-24 pb-12">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-2xl md:text-3xl font-bold mb-6 text-center">Track Your Train</h1>
+        {/* Back Button */}
+        <Link to="/" className="inline-flex items-center text-irctc-blue hover:text-irctc-blue-dark mb-6">
+          <ArrowLeft className="h-4 w-4 mr-2" />
+          Back to Home
+        </Link>
+
+        <h1 className="text-2xl md:text-3xl font-bold mb-6 text-center text-transparent bg-clip-text bg-gradient-to-r from-[#0057FF] to-[#0EA5E9]">
+          Track Your Train
+        </h1>
         
         {/* Search Form */}
-        <Card className="mb-8">
+        <Card className="mb-8 border border-white/5 bg-[#0a0e17]">
           <CardContent className="pt-6">
             <form onSubmit={handleSearch} className="flex flex-col md:flex-row gap-4">
               <div className="flex-1">
@@ -144,13 +152,13 @@ const TrainTrack = () => {
                   value={trainNumber}
                   onChange={(e) => setTrainNumber(e.target.value)}
                   placeholder="Enter Train Number (e.g. 12301)"
-                  className="w-full h-12"
+                  className="w-full h-12 bg-[#0f172a] border-white/10 text-white placeholder:text-white/50 focus:border-[#0057FF]"
                 />
               </div>
               <Button 
                 type="submit" 
                 disabled={isSearching || !trainNumber}
-                className="bg-irctc-blue hover:bg-irctc-blue-dark h-12"
+                className="bg-[#0057FF] hover:bg-[#003DB3] h-12 text-white"
               >
                 {isSearching ? "Searching..." : "Track Train"}
                 {!isSearching && <Search className="ml-2 h-4 w-4" />}
@@ -161,16 +169,16 @@ const TrainTrack = () => {
         
         {isSearching ? (
           <div className="space-y-4">
-            <Skeleton className="h-40 w-full rounded-xl" />
-            <Skeleton className="h-[30rem] w-full rounded-xl" />
+            <Skeleton className="h-40 w-full rounded-xl bg-[#0f172a]" />
+            <Skeleton className="h-[30rem] w-full rounded-xl bg-[#0f172a]" />
           </div>
         ) : trainData ? (
           <>
             {/* Train Info Card */}
-            <Card className="mb-6">
+            <Card className="mb-6 border border-white/5 bg-[#0a0e17]">
               <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Train className="h-5 w-5 text-irctc-blue" />
+                <CardTitle className="flex items-center gap-2 text-white">
+                  <Train className="h-5 w-5 text-[#0057FF]" />
                   {trainData.trainNumber} - {trainData.trainName}
                 </CardTitle>
               </CardHeader>
@@ -181,7 +189,7 @@ const TrainTrack = () => {
                       {trainData.status}
                     </div>
                     {trainData.delayTime && (
-                      <div className="flex items-center text-irctc-gray-text">
+                      <div className="flex items-center text-white/70">
                         <Clock className="h-4 w-4 mr-1" />
                         <span>Delayed by {trainData.delayTime}</span>
                       </div>
@@ -189,18 +197,20 @@ const TrainTrack = () => {
                   </div>
                   
                   <div className="flex flex-col">
-                    <div className="text-sm text-irctc-gray-text">Last Station Passed</div>
+                    <div className="text-sm text-white/70">Last Station Passed</div>
                     <div className="flex items-center mt-1">
-                      <MapPin className="h-4 w-4 text-irctc-gray-text mr-1" />
-                      {trainData.lastStation} ({trainData.lastStationTime})
+                      <MapPin className="h-4 w-4 text-[#0057FF] mr-1" />
+                      <span className="text-white">{trainData.lastStation}</span>
+                      <span className="text-white/70 ml-1">({trainData.lastStationTime})</span>
                     </div>
                   </div>
                   
                   <div className="flex flex-col">
-                    <div className="text-sm text-irctc-gray-text">Next Station</div>
+                    <div className="text-sm text-white/70">Next Station</div>
                     <div className="flex items-center mt-1">
-                      <MapPin className="h-4 w-4 text-irctc-gray-text mr-1" />
-                      {trainData.nextStation} ({trainData.nextStationTime})
+                      <MapPin className="h-4 w-4 text-[#0057FF] mr-1" />
+                      <span className="text-white">{trainData.nextStation}</span>
+                      <span className="text-white/70 ml-1">({trainData.nextStationTime})</span>
                     </div>
                   </div>
                 </div>
@@ -208,9 +218,9 @@ const TrainTrack = () => {
             </Card>
             
             {/* Journey Progress */}
-            <Card className="mb-6">
+            <Card className="mb-6 border border-white/5 bg-[#0a0e17]">
               <CardHeader>
-                <CardTitle className="text-lg">Journey Progress</CardTitle>
+                <CardTitle className="text-lg text-white">Journey Progress</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="relative pt-4">
@@ -224,14 +234,14 @@ const TrainTrack = () => {
                         {/* Line connecting stations */}
                         {!isLast && (
                           <div className={`absolute left-4 top-4 bottom-0 w-0.5 ${
-                            station.status === "Completed" ? "bg-green-500" : "bg-gray-200"
+                            station.status === "Completed" ? "bg-[#00FF57]" : "bg-white/10"
                           }`} />
                         )}
                         
                         {/* Station marker */}
                         <div className={`relative z-10 rounded-full h-8 w-8 flex items-center justify-center mr-4 ${
-                          isCurrent ? "bg-blue-500" : 
-                          station.status === "Completed" ? "bg-green-500" : "bg-gray-200"
+                          isCurrent ? "bg-[#0057FF]" : 
+                          station.status === "Completed" ? "bg-[#00FF57]" : "bg-white/10"
                         }`}>
                           <div className="h-3 w-3 bg-white rounded-full" />
                         </div>
@@ -240,21 +250,21 @@ const TrainTrack = () => {
                         <div className="flex-1">
                           <div className="flex flex-col md:flex-row md:items-center justify-between">
                             <div>
-                              <h3 className={`font-medium ${isCurrent ? "text-blue-600" : ""}`}>
+                              <h3 className={`font-medium ${isCurrent ? "text-[#0057FF]" : "text-white"}`}>
                                 {station.name}
                               </h3>
-                              <div className="text-sm text-irctc-gray-text">
+                              <div className="text-sm text-white/70">
                                 {isFirst ? "Started from here" : `Distance: ${station.distance}`} • Platform: {station.platform}
                               </div>
                             </div>
                             <div className="mt-2 md:mt-0">
                               <div className="flex items-center gap-2">
-                                <div className="text-sm">
-                                  <span className="text-irctc-gray-text mr-1">Arr:</span>
+                                <div className="text-sm text-white">
+                                  <span className="text-white/70 mr-1">Arr:</span>
                                   {station.arrivalTime}
                                 </div>
-                                <div className="text-sm">
-                                  <span className="text-irctc-gray-text mr-1">Dep:</span>
+                                <div className="text-sm text-white">
+                                  <span className="text-white/70 mr-1">Dep:</span>
                                   {station.departureTime}
                                 </div>
                                 <div className={`text-xs px-2 py-0.5 rounded-md font-medium ${getStatusColor(station.status)}`}>
@@ -272,31 +282,31 @@ const TrainTrack = () => {
             </Card>
             
             {/* Schedule Table */}
-            <Card>
+            <Card className="border border-white/5 bg-[#0a0e17]">
               <CardHeader>
-                <CardTitle className="text-lg">Complete Schedule</CardTitle>
+                <CardTitle className="text-lg text-white">Complete Schedule</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="overflow-x-auto">
                   <Table>
                     <TableHeader>
-                      <TableRow>
-                        <TableHead>Station</TableHead>
-                        <TableHead>Arrival</TableHead>
-                        <TableHead>Departure</TableHead>
-                        <TableHead>Distance</TableHead>
-                        <TableHead>Platform</TableHead>
-                        <TableHead>Status</TableHead>
+                      <TableRow className="border-white/5 hover:bg-white/5">
+                        <TableHead className="text-white/70">Station</TableHead>
+                        <TableHead className="text-white/70">Arrival</TableHead>
+                        <TableHead className="text-white/70">Departure</TableHead>
+                        <TableHead className="text-white/70">Distance</TableHead>
+                        <TableHead className="text-white/70">Platform</TableHead>
+                        <TableHead className="text-white/70">Status</TableHead>
                       </TableRow>
                     </TableHeader>
                     <TableBody>
                       {trainData.stations.map((station, index) => (
-                        <TableRow key={index}>
-                          <TableCell className="font-medium">{station.name}</TableCell>
-                          <TableCell>{station.arrivalTime}</TableCell>
-                          <TableCell>{station.departureTime}</TableCell>
-                          <TableCell>{station.distance}</TableCell>
-                          <TableCell>{station.platform}</TableCell>
+                        <TableRow key={index} className="border-white/5 hover:bg-white/5">
+                          <TableCell className="font-medium text-white">{station.name}</TableCell>
+                          <TableCell className="text-white">{station.arrivalTime}</TableCell>
+                          <TableCell className="text-white">{station.departureTime}</TableCell>
+                          <TableCell className="text-white">{station.distance}</TableCell>
+                          <TableCell className="text-white">{station.platform}</TableCell>
                           <TableCell>
                             <div className={`text-xs px-2 py-0.5 rounded-md font-medium inline-block ${getStatusColor(station.status)}`}>
                               {station.status}
@@ -311,11 +321,11 @@ const TrainTrack = () => {
             </Card>
           </>
         ) : (
-          <Card className="text-center py-12 bg-gray-50">
+          <Card className="text-center py-12 bg-[#0a0e17] border border-white/5">
             <div className="flex flex-col items-center justify-center">
-              <Train className="h-16 w-16 text-irctc-gray mb-4" />
-              <h2 className="text-xl font-semibold mb-2">Enter Train Number to Track</h2>
-              <p className="text-irctc-gray-text max-w-md mx-auto">
+              <Train className="h-16 w-16 text-[#0057FF] mb-4" />
+              <h2 className="text-xl font-semibold mb-2 text-white">Enter Train Number to Track</h2>
+              <p className="text-white/70 max-w-md mx-auto">
                 Get real-time information about the current location, running status and complete schedule of your train.
               </p>
             </div>
