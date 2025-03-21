@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Link } from "react-router-dom";
 import { 
@@ -373,4 +374,15 @@ const Index = () => {
               Our Advantages
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-4 text-transparent bg-clip-text bg-gradient-to-r from-[#0A4DA6] to-[#2179DE]">
+              Why Choose Our Platform
+            </h2>
+          </div>
+        </div>
+      </section>
+      
+      <Footer />
+    </div>
+  );
+};
 
+export default Index;
