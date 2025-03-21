@@ -44,10 +44,11 @@ const BackgroundVideo = ({
 
     const handleCanPlay = () => {
       setIsLoaded(true);
+      console.log("Video can play now:", src);
     };
 
-    const handleError = () => {
-      console.error("Error loading video:", src);
+    const handleError = (e: any) => {
+      console.error("Error loading video:", src, e);
       setHasError(true);
     };
 
@@ -56,12 +57,22 @@ const BackgroundVideo = ({
 
     // Load and play the video
     video.load();
+    
+    // Attempt to play and handle any autoplay restrictions
+    if (autoPlay) {
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(error => {
+          console.warn("Autoplay was prevented:", error);
+        });
+      }
+    }
 
     return () => {
       video.removeEventListener('canplay', handleCanPlay);
       video.removeEventListener('error', handleError);
     };
-  }, [src]);
+  }, [src, autoPlay]);
 
   // Preload images to avoid flashes
   useEffect(() => {
@@ -103,6 +114,7 @@ const BackgroundVideo = ({
         className={`w-full h-full object-cover scale-105 transform transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
       >
         <source src={src} type="video/mp4" />
+        Your browser does not support the video tag.
       </video>
     </div>
   );
