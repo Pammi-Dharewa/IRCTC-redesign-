@@ -1,41 +1,18 @@
 
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { User, Lock, Eye, EyeOff, Mail, ArrowLeft, Smartphone, Train } from "lucide-react";
-import { cn } from "@/lib/utils";
-import BackgroundVideo from "@/components/BackgroundVideo";
 
 const Login = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
   const [showPassword, setShowPassword] = useState(false);
   const [activeTab, setActiveTab] = useState<string>("login");
-  const [videoSource, setVideoSource] = useState<string>("https://cdn.coverr.co/videos/coverr-train-journey-through-scenic-mountains-453/1080p.mp4");
+  
 
-  // Alternate video sources for fallbacks
-  const videoSources = [
-    "https://cdn.coverr.co/videos/coverr-train-journey-through-scenic-mountains-453/1080p.mp4",
-    "https://cdn.coverr.co/videos/coverr-train-passing-through-mountains-5224/1080p.mp4",
-    "https://cdn.coverr.co/videos/coverr-train-moving-through-tunnel-369/1080p.mp4"
-  ];
-
-  const fallbackImage = "https://images.unsplash.com/photo-1474487548417-781cb71495f3?q=80&w=2084&auto=format&fit=crop";
-
-  // Extract register parameter from URL if present
-  useEffect(() => {
-    const searchParams = new URLSearchParams(location.search);
-    if (searchParams.get("register") === "true") {
-      setActiveTab("register");
-    }
-    
-    // Randomly select a video
-    const randomVideo = videoSources[Math.floor(Math.random() * videoSources.length)];
-    setVideoSource(randomVideo);
-  }, [location]);
+  
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -43,15 +20,7 @@ const Login = () => {
 
   return (
     <div className="min-h-screen flex flex-col relative overflow-hidden bg-[#0a0e17]">
-      {/* Background Elements */}
-      <BackgroundVideo src={videoSource} opacity={0.7} fallbackImage={fallbackImage} />
-      
-      {/* Animated railtrack */}
-      <div className="absolute bottom-0 left-0 right-0 h-10 overflow-hidden">
-        <div className="train-track w-full h-4 absolute bottom-2"></div>
-        <div className="train-animation"></div>
-      </div>
-      
+
       <div className="container mx-auto px-4 md:px-6 py-8 relative z-10">
         <Link to="/" className="inline-flex items-center text-white hover:text-[#2179DE] transition-colors mb-8">
           <ArrowLeft className="h-4 w-4 mr-2" />

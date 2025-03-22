@@ -1,10 +1,9 @@
 
 import React from "react";
-import { ArrowRight, Clock, CalendarDays, TrendingUp, MapPin, Zap, Train, Shield } from "lucide-react";
+import { CalendarDays, TrendingUp, MapPin, Zap, Train, Shield } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 type TrainSeatAvailability = {
   class: string;
@@ -176,7 +175,6 @@ const TrainCard = ({
               <div className="text-xs text-gray-300">Direct</div>
             </div>
 
-            {/* Arrival with enhanced styling */}
             <div className="relative">
               <div className="absolute -left-2 top-1/2 w-4 h-4 rounded-full bg-gradient-to-r from-irctc-medium to-irctc-regular transform -translate-y-1/2 animate-pulse-gentle"></div>
               <p className="text-2xl font-semibold ml-4">{arrivalTime}</p>
@@ -195,7 +193,6 @@ const TrainCard = ({
           </div>
         </div>
 
-        {/* Availability with enhanced visual design */}
         <div className="mt-4">
           <p className="text-sm font-medium mb-3 flex items-center text-white">
             <span className="bg-irctc-medium/20 text-irctc-light text-xs font-medium px-2 py-0.5 rounded mr-2">

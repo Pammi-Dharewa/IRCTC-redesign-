@@ -1,8 +1,7 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
-import { cn } from "@/lib/utils";
-import { Facebook, Twitter, Instagram, Youtube, Mail, PhoneCall, Train, MapPin, Heart } from "lucide-react";
+import { Facebook, Twitter, Instagram, Youtube, Mail, PhoneCall, MapPin, Heart } from "lucide-react";
 import { motion } from "framer-motion";
 
 const Footer = () => {

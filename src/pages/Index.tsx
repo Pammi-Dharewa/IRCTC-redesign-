@@ -1,10 +1,8 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import trainVideo from "../video/trainVideo.mp4";
 import vandeBharat from '../images/vandebharat.jpg';
-import train from '../images/train.jpg';
 import maharaja from '../video/maharaja.mp4';
-import banglore_train from '../images/banglore.jpg'
+import mobile from '../images/mobile.jpg'
 
 import { 
   Carousel,
@@ -17,28 +15,24 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { AspectRatio } from "@/components/ui/aspect-ratio";
 import BackgroundVideo from "@/components/BackgroundVideo";
 import LiveTrainMap from "@/components/LiveTrainMap";
 import { 
   Train, 
   Search, 
   MapPin, 
-  Clock, 
   Calendar, 
   ArrowRight, 
   Star, 
   ShieldCheck, 
   Zap, 
   Clock3,
-  PhoneCall,
   HeadphonesIcon,
   ChevronRight,
   Sparkles,
   Award,
   PlayCircle
 } from "lucide-react";
-import { Progress } from "@/components/ui/progress";
 
 const Index = () => {
   // Popular destinations data with Indian locations and updated images
@@ -69,30 +63,7 @@ const Index = () => {
     }
   ];
 
-  // Testimonials data
-  const testimonials = [
-    {
-      quote: "The new IRCTC interface is so much cleaner and faster. I booked my ticket in less than 30 seconds. Great improvement!",
-      name: "Aarav Patel",
-      location: "Mumbai",
-      rating: 5
-    },
-    {
-      quote: "I love how easy it is to track my train now. The live updates feature is a game-changer for planning my arrival.",
-      name: "Priya Singh",
-      location: "Bengaluru",
-      rating: 5
-    },
-    {
-      quote: "The seat availability view is so intuitive now. I can easily compare different trains and classes before booking.",
-      name: "Vikram Reddy",
-      location: "Chennai",
-      rating: 5
-    }
-  ];
-
-  // Create particle elements for the hero background
-  useEffect(() => {
+   useEffect(() => {
     const createParticles = () => {
       const heroParticles = document.querySelector('.hero-particles');
       if (!heroParticles) return;
@@ -105,12 +76,10 @@ const Index = () => {
         const particle = document.createElement('div');
         particle.classList.add('hero-particle');
         
-        // Random size between 10px and 80px
         const size = Math.random() * 70 + 10;
         particle.style.width = `${size}px`;
         particle.style.height = `${size}px`;
         
-        // Random position
         particle.style.left = `${Math.random() * 100}%`;
         particle.style.top = `${Math.random() * 100}%`;
         
@@ -123,7 +92,6 @@ const Index = () => {
     
     createParticles();
     
-    // Recreate particles on window resize
     window.addEventListener('resize', createParticles);
     
     return () => {
@@ -135,18 +103,14 @@ const Index = () => {
     <div className="page-transition min-h-screen flex flex-col bg-[#0a0e17] text-white">
       <Navbar />
       
-      {/* Hero Section with Advanced Background */}
       <section className="pt-28 pb-20 relative overflow-hidden min-h-screen">
-        {/* Dynamic background pattern */}
         <div className="absolute inset-0 hero-bg-pattern opacity-70"></div>
         
         {/* Gradient overlay */}
         <div className="absolute inset-0 hero-gradient-overlay"></div>
         
-        {/* Animated particles */}
         <div className="hero-particles"></div>
         
-        {/* Hero background image with parallax effect */}
         <div className="absolute inset-0 bg-cover bg-center bg-fixed opacity-15" 
              style={{backgroundImage: "url('https://images.unsplash.com/photo-1535535112387-56ffe8db21ff?q=80&w=2000&auto=format&fit=crop')"}}></div>
         
@@ -182,7 +146,6 @@ const Index = () => {
                 </Link>
               </div>
               
-              {/* Stats highlights */}
               <div className="flex flex-wrap gap-6 pt-6 text-sm">
                 <div className="flex items-center gap-2">
                   <div className="h-8 w-8 rounded-full bg-[#1F2937] flex items-center justify-center">
@@ -217,17 +180,7 @@ const Index = () => {
             </div>
             
             <div className="md:w-1/2 relative">
-              {/* 3D-style image container */}
-              <div className="hero-image-container">
-                <img 
-                  src="https://images.unsplash.com/photo-1540103711724-ebf833bde8d1?q=80&w=1500&auto=format&fit=crop" 
-                  alt="Luxury Indian train" 
-                  className="w-full h-auto object-cover"
-                />
-                <div className="hero-image-overlay"></div>
-              </div>
               
-              {/* Search form with enhanced styling */}
               <div className="bg-black/40 backdrop-blur-xl rounded-2xl shadow-xl p-6 border border-white/10 animate-fade-in relative overflow-hidden mt-6">
                 <h3 className="text-xl font-semibold mb-6 flex items-center text-white">
                   <Search className="h-5 w-5 mr-2 text-[#0057FF]" />
@@ -305,7 +258,6 @@ const Index = () => {
           </div>
         </div>
         
-        {/* Enhanced animated train track */}
         <div className="absolute -bottom-4 left-0 right-0 h-14">
           <div className="railroad-track">
             <div className="track-light"></div>
@@ -313,7 +265,6 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Indian Railways Featured Video Section */}
       <section className="py-20 relative overflow-hidden bg-[#0a0e17]">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-10">
@@ -362,7 +313,6 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Live Train Map Section with enhanced styling */}
       <section className="py-20 relative overflow-hidden bg-[#0a0e17]">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-12">
@@ -377,7 +327,6 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Indian Railways Journey Showcase */}
       <section className="py-20 relative overflow-hidden">
         <BackgroundVideo 
           src="https://video-previews.elements.envatousercontent.com/h264-video-previews/78e33f7d-d7c6-4c58-aa30-6ed6b8dd6805/39199684.mp4"
@@ -413,7 +362,6 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Features Section with enhanced visuals */}
       <section className="py-20 bg-[#0a0e17] relative overflow-hidden">
         <div className="absolute inset-0 gradient-mesh opacity-20"></div>
         
@@ -476,7 +424,6 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Popular Routes Section with Carousel - Updated with Indian Railway themed images */}
       <section className="py-20 bg-[#0a0e17] relative overflow-hidden">
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#0057FF]/20 to-transparent"></div>
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#0057FF]/20 to-transparent"></div>
@@ -559,13 +506,11 @@ const Index = () => {
         </div>
       </section>
       
-      {/* IRCTC App promo section with 3D mockup */}
       <section className="py-20 bg-[#0a0e17] relative overflow-hidden">
         <div className="absolute inset-0 pattern-dots bg-dots-sm opacity-20"></div>
         
         <div className="container mx-auto px-4 md:px-6 relative">
           <div className="bg-gradient-to-r from-[#0057FF]/30 to-[#0EA5E9]/30 rounded-2xl p-10 md:p-16 text-white relative overflow-hidden">
-            {/* Abstract shapes */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full -translate-x-20 -translate-y-32"></div>
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-white opacity-5 rounded-full translate-x-20 translate-y-32"></div>
             
@@ -594,7 +539,7 @@ const Index = () => {
               <div className="lg:w-1/2 flex justify-center items-center relative">
                 <div className="relative w-64 h-auto">
                   <img 
-                    src="https://via.placeholder.com/300x600/3282F6/FFFFFF?text=IRCTC+App"
+                    src={mobile}
                     alt="IRCTC Mobile App"
                     className="rounded-2xl shadow-2xl border border-white/10 object-cover z-10 relative"
                   />

@@ -1,69 +1,74 @@
-# Welcome to your Lovable project
+# Welcome to your Lovable Project
 
-## Project info
+## Project Info
 
-**URL**: https://lovable.dev/projects/db058272-bfc9-4b56-ba5e-bf5bbc6063eb
+**URL**: [Add your project URL here]
 
-## How can I edit this code?
+## How Can I Edit This Code?
 
-There are several ways of editing your application.
+There are several ways to edit your application:
 
-**Use Lovable**
+### Work Locally Using Your IDE
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/db058272-bfc9-4b56-ba5e-bf5bbc6063eb) and start prompting.
+1. **Clone the Repository**  
+   Clone the repository using the project's Git URL:
+   ```sh
+   git clone <YOUR_GIT_URL>
+   ```
 
-Changes made via Lovable will be committed automatically to this repo.
+2. **Navigate to the Project Directory**  
+   ```sh
+   cd <YOUR_PROJECT_NAME>
+   ```
 
-**Use your preferred IDE**
+3. **Install Dependencies**  
+   Install the necessary dependencies:
+   ```sh
+   npm install
+   ```
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+4. **Start the Development Server**  
+   Start the development server with auto-reloading and an instant preview:
+   ```sh
+   npm run dev
+   ```
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+> **Note**: Ensure you have Node.js and npm installed. You can install them using [nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
 
-Follow these steps:
+### Edit a File Directly in GitHub
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+1. Navigate to the desired file(s) in the repository.
+2. Click the "Edit" button (pencil icon) at the top right of the file view.
+3. Make your changes and commit them.
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### Use GitHub Codespaces
 
-# Step 3: Install the necessary dependencies.
-npm i
+1. Navigate to the main page of your repository.
+2. Click on the "Code" button (green button) near the top right.
+3. Select the "Codespaces" tab.
+4. Click on "New Codespace" to launch a new Codespace environment.
+5. Edit files directly within the Codespace and commit and push your changes once you're done.
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+## What Technologies Are Used for This Project?
 
-**Edit a file directly in GitHub**
+This project is built with the following technologies:
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- **Vite**: A fast build tool for modern web projects.
+- **TypeScript**: A strongly typed programming language that builds on JavaScript.
+- **React**: A JavaScript library for building user interfaces.
+- **shadcn-ui**: A modern UI component library.
+- **Tailwind CSS**: A utility-first CSS framework.
 
-**Use GitHub Codespaces**
+## Project Overview
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+This project is a modern, reimagined version of the IRCTC website, built for a hackathon. The goal was to enhance the user experience with an improved UI/UX, better performance, and intuitive navigation.
 
-## What technologies are used for this project?
+### Features
 
-This project is built with .
+- **Train Search & Booking**: Users can search for trains based on source, destination, and date.
+- **Seat Availability Check**: Displays real-time seat availability.
+- **Responsive Design**: Fully optimized for mobile and desktop users.
+- **Modern UI**: Built with ShadCN UI and Tailwind CSS for a sleek design.
+- **Fast Performance**: Powered by Vite and optimized React components.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/db058272-bfc9-4b56-ba5e-bf5bbc6063eb) and click on Share -> Publish.
-
-## I want to use a custom domain - is that possible?
-
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+This project was built as part of a hackathon challenge and showcases modern web development best practices. Feel free to contribute or suggest improvements!
