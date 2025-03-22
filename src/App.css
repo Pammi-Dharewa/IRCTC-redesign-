@@ -12,7 +12,7 @@
   transition: filter 300ms;
 }
 .logo:hover {
-  filter: drop-shadow(0 0 2em #0057FF);
+  filter: drop-shadow(0 0 2em #2A6EF5);
 }
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #0EA5E9);
@@ -43,20 +43,20 @@
   0% {
     left: -10%;
     transform: translateY(0px) scale(1);
-    filter: drop-shadow(0 0 10px rgba(0, 87, 255, 0.7));
+    filter: drop-shadow(0 0 10px rgba(42, 110, 245, 0.7));
   }
   25% {
     transform: translateY(-3px) scale(1.05);
-    filter: drop-shadow(0 0 15px rgba(0, 87, 255, 0.9));
+    filter: drop-shadow(0 0 15px rgba(42, 110, 245, 0.9));
   }
   75% {
     transform: translateY(-1px) scale(1.02);
-    filter: drop-shadow(0 0 12px rgba(0, 87, 255, 0.8));
+    filter: drop-shadow(0 0 12px rgba(42, 110, 245, 0.8));
   }
   100% {
     left: 110%;
     transform: translateY(0px) scale(1);
-    filter: drop-shadow(0 0 10px rgba(0, 87, 255, 0.7));
+    filter: drop-shadow(0 0 10px rgba(42, 110, 245, 0.7));
   }
 }
 
@@ -187,22 +187,22 @@
 
 /* Modern Glassmorphism */
 .glass-card {
-  background: rgba(31, 41, 55, 0.2);
+  background: rgba(17, 24, 39, 0.7);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(0, 87, 255, 0.1);
+  border: 1px solid rgba(42, 110, 245, 0.1);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
 /* Animated background patterns */
 .pattern-dots {
-  background-image: radial-gradient(rgba(0, 87, 255, 0.1) 2px, transparent 2px);
+  background-image: radial-gradient(rgba(42, 110, 245, 0.1) 2px, transparent 2px);
   background-size: 24px 24px;
 }
 
 .gradient-mesh {
   background: 
-    linear-gradient(rgba(0, 87, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 87, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(42, 110, 245, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(42, 110, 245, 0.03) 1px, transparent 1px);
   background-size: 24px 24px;
   animation: gradient-shift 15s linear infinite;
 }

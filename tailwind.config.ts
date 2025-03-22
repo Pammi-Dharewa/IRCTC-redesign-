@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -68,17 +67,20 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				irctc: {
-					red: '#FF6B6B',
+					red: '#E93F3F',
 					"red-light": '#FFEEEE',
-					"red-dark": '#FF5252',
+					"red-dark": '#D61C1C',
 					yellow: '#FFD166',
-					teal: '#4ECDC4',
+					teal: '#29B9AD',
 					purple: '#6C63FF',
-					dark: '#1A1A2E',
-					"dark-medium": '#2A2A42',
-					"dark-light": '#30305A',
-					"gray-text": '#9999AA',
-					"gray-text-light": '#B5B5C5',
+					blue: '#2A6EF5',
+					"blue-light": '#E6F0FF',
+					"blue-dark": '#164094',
+					dark: '#111827',
+					"dark-medium": '#1F2937',
+					"dark-light": '#374151',
+					"gray-text": '#9CA3AF',
+					"gray-text-light": '#D1D5DB',
 				}
 			},
 			borderRadius: {
@@ -261,8 +263,9 @@ export default {
 				'soft': '0 2px 15px rgba(0, 0, 0, 0.03)',
 				'medium': '0 4px 20px rgba(0, 0, 0, 0.05)',
 				'card': '0 2px 15px rgba(0, 0, 0, 0.03), 0 0 1px rgba(0, 0, 0, 0.05)',
-				'inner-glow': 'inset 0 0 10px rgba(0, 87, 255, 0.1)',
-				'glow-blue': '0 0 15px rgba(0, 87, 255, 0.5)'
+				'inner-glow': 'inset 0 0 10px rgba(42, 110, 245, 0.1)',
+				'glow-blue': '0 0 15px rgba(42, 110, 245, 0.5)',
+				'glow-red': '0 0 15px rgba(233, 63, 63, 0.5)',
 			},
 			backdropBlur: {
 				'xs': '2px',
