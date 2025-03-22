@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Link } from "react-router-dom";
 import trainVideo from "../video/trainVideo.mp4";
@@ -535,10 +536,37 @@ const Index = () => {
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Button className="h-14 px-6 bg-[#0057FF] hover:bg-[#003DB3] text-white rounded-xl font-medium">
                     <svg className="h-6 w-6 mr-2" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M17.9,19.9l-5.4,2.9c-0.4,0.2-0.9,0.2-1.4,0L5.7,19.9c-0.3-0.2-0.5-0.5-0.5-0.8v-14c0-0.3,0.2-0.7,0.5-0.8 l5.4-2.9c0.4-0.2,0.9-0.2,1.4,0l5.4,2.9c0.3,0.2,0.5,0.5,0.5,0.8v14C18.4,19.4,18.2,19.7,17.9,19.9z M12.1,22.9 c0.9,0,1.8-0.2,2.6-0.7l5.4-2.9c0.9-0.5,1.4-1.4,1.4-2.4v-14c0-1-0.5-1.9-1.4-2.4l-5.4-2.9c-0.8-0.4-1.7-0.7-2.6-0.7 s-1.8,0.2-2.6,0.7l-5.4,2.9c-0.9,0.5-1.4,1.4-1.4,2.4v14c0,1,0.5,1.9,1.4,2.4l5.4,2.9C10.3,22.7,11.2,22.9,12.1,22.9z"/>
+                      <path d="M17.9,19.9l-5.4,2.9c-0.4,0.2-0.9,0.2-1.4,0L5.7,19.9c-0.3-0.2-0.5-0.5-0.5-0.8v-14c0-0.3,0.2-0.7,0.5-0.8 l5.4-2.9c0.4-0.2,0.9-0.2,1.4,0l5.4,2.9c0.3,0.2,0.5,0.5,0.5,0.8v14C18.4,19.4,18.2,19.7,17.9,19.9z M12.1,22.9 c0.9,0,1.8-0.2,2.6-0.7l5.4-2.9c0.9-0.5,1.4-1.4,1.4-2.4v-14c0-1-0.5-1.9-1.4-2.4l-5.4-2.9c-0.8-0.4-1.7-0.7-2.6-0.7 s-1.8,0.2-2.6,0.7l-5.4,2.9c-0.9,0.5-1.4,1.4-1.4,2.4v14c0,1,0.5,1.9,1.4,2.4l5.4,2.9C10.3,22.7,11.2,22.9,12.1,22.9z" />
                     </svg>
                     Google Play
                   </Button>
                   <Button className="h-14 px-6 bg-[#1F2937] hover:bg-[#2D3748] text-white rounded-xl font-medium">
                     <svg className="h-6 w-6 mr-2" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M16.3,10.9c0-3.2,2.6-4.8,2.7-4.8c-1.5-2.2-3.8-2.5-4.6-2.5c-2-0.2-3.8,1.2-4.8,1.2c-1,0-2.5-1.2-4.1-1.1 C3.6,3.7,1.9,4.8,1,6.5c-1.7,3-0.4
+                      <path d="M16.3,10.9c0-3.2,2.6-4.8,2.7-4.8c-1.5-2.2-3.8-2.5-4.6-2.5c-2-0.2-3.8,1.2-4.8,1.2c-1,0-2.5-1.2-4.1-1.1 C3.6,3.7,1.9,4.8,1,6.5c-1.7,3-0.4,7.4,1.2,9.8c0.8,1.2,1.8,2.5,3,2.5c1.2,0,1.7-0.8,3.1-0.8c1.5,0,1.9,0.8,3.1,0.7 c1.3,0,2.1-1.2,2.9-2.3c0.9-1.3,1.3-2.6,1.3-2.7C16.4,13.7,16.3,10.9,16.3,10.9z M13.3,3.2c0.7-0.8,1.1-1.9,1-3 c-0.9,0-2.1,0.6-2.8,1.5c-0.6,0.7-1.1,1.9-1,3C11.5,4.8,12.7,4,13.3,3.2z" />
+                    </svg>
+                    App Store
+                  </Button>
+                </div>
+              </div>
+              <div className="lg:w-1/2 flex justify-center items-center relative">
+                <div className="relative w-64 h-auto">
+                  <img 
+                    src="https://via.placeholder.com/300x600/3282F6/FFFFFF?text=IRCTC+App"
+                    alt="IRCTC Mobile App"
+                    className="rounded-2xl shadow-2xl border border-white/10 object-cover z-10 relative"
+                  />
+                  <div className="absolute -top-4 -left-4 w-64 h-64 bg-gradient-to-r from-[#0057FF]/30 to-[#0EA5E9]/30 rounded-full blur-2xl opacity-60 -z-10"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Footer */}
+      <Footer />
+    </div>
+  );
+};
+
+export default Index;
