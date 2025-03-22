@@ -1,5 +1,4 @@
-
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import trainVideo from "../video/trainVideo.mp4";
 import vandeBharat from '../images/vandebharat.jpg';
@@ -92,24 +91,69 @@ const Index = () => {
     }
   ];
 
+  // Create particle elements for the hero background
+  useEffect(() => {
+    const createParticles = () => {
+      const heroParticles = document.querySelector('.hero-particles');
+      if (!heroParticles) return;
+      
+      // Clear existing particles
+      heroParticles.innerHTML = '';
+      
+      // Create new particles
+      for (let i = 0; i < 20; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('hero-particle');
+        
+        // Random size between 10px and 80px
+        const size = Math.random() * 70 + 10;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        
+        // Random position
+        particle.style.left = `${Math.random() * 100}%`;
+        particle.style.top = `${Math.random() * 100}%`;
+        
+        // Random animation delay
+        particle.style.animationDelay = `${Math.random() * 10}s`;
+        
+        heroParticles.appendChild(particle);
+      }
+    };
+    
+    createParticles();
+    
+    // Recreate particles on window resize
+    window.addEventListener('resize', createParticles);
+    
+    return () => {
+      window.removeEventListener('resize', createParticles);
+    };
+  }, []);
+
   return (
     <div className="page-transition min-h-screen flex flex-col bg-[#0a0e17] text-white">
       <Navbar />
       
-      {/* Hero Section with Modern Gradient Background */}
-      <section className="pt-32 pb-20 relative overflow-hidden min-h-screen">
-        {/* Modern gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0a0e17] via-[#0f172a] to-[#1e293b]">
-          {/* Animated gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0057FF]/10 via-[#0EA5E9]/10 to-[#00FF57]/10 animate-gradient-x"></div>
-          {/* Decorative dots pattern */}
-          {/* <div className="absolute inset-0 opacity-10 pattern-dots bg-dots-sm"></div> */}
-        </div>
+      {/* Hero Section with Advanced Background */}
+      <section className="pt-28 pb-20 relative overflow-hidden min-h-screen">
+        {/* Dynamic background pattern */}
+        <div className="absolute inset-0 hero-bg-pattern opacity-70"></div>
+        
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 hero-gradient-overlay"></div>
+        
+        {/* Animated particles */}
+        <div className="hero-particles"></div>
+        
+        {/* Hero background image with parallax effect */}
+        <div className="absolute inset-0 bg-cover bg-center bg-fixed opacity-15" 
+             style={{backgroundImage: "url('https://images.unsplash.com/photo-1535535112387-56ffe8db21ff?q=80&w=2000&auto=format&fit=crop')"}}></div>
         
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="flex flex-col md:flex-row gap-12 items-center">
             <div className="md:w-1/2 space-y-6">
-              <div className="inline-flex items-center gap-2 text-sm font-medium text-white bg-[#0057FF]/20 px-4 py-1 rounded-full animate-pulse-gentle">
+              <div className="inline-flex items-center gap-2 text-sm font-medium text-white bg-[#0057FF]/20 px-4 py-1 rounded-full animate-pulse-gentle backdrop-blur-sm">
                 <Sparkles className="h-4 w-4 text-[#0057FF]" />
                 <span>Indian Railways Reimagined</span>
               </div>
@@ -173,15 +217,18 @@ const Index = () => {
             </div>
             
             <div className="md:w-1/2 relative">
-              {/* Floating train illustration */}
-              <div className="absolute -top-16 -right-10 opacity-10 animate-float">
-                {/* <Train size={120} strokeWidth={1} /> */}
+              {/* 3D-style image container */}
+              <div className="hero-image-container">
+                <img 
+                  src="https://images.unsplash.com/photo-1540103711724-ebf833bde8d1?q=80&w=1500&auto=format&fit=crop" 
+                  alt="Luxury Indian train" 
+                  className="w-full h-auto object-cover"
+                />
+                <div className="hero-image-overlay"></div>
               </div>
               
-              <div className="bg-black/40 backdrop-blur-md rounded-2xl shadow-xl p-6 border border-white/10 animate-fade-in relative overflow-hidden">
-                {/* Decorative blob in the background */}
-                {/* <div className="absolute -bottom-20 -right-20 w-40 h-40 bg-gradient-to-r from-[#0057FF]/20 to-[#0EA5E9]/20 rounded-full opacity-50"></div> */}
-                
+              {/* Search form with enhanced styling */}
+              <div className="bg-black/40 backdrop-blur-xl rounded-2xl shadow-xl p-6 border border-white/10 animate-fade-in relative overflow-hidden mt-6">
                 <h3 className="text-xl font-semibold mb-6 flex items-center text-white">
                   <Search className="h-5 w-5 mr-2 text-[#0057FF]" />
                   Search Trains
@@ -254,18 +301,14 @@ const Index = () => {
                   </p>
                 </div>
               </div>
-              
-              {/* Decorative elements */}
-              {/* <div className="absolute -bottom-4 -right-4 h-24 w-24 bg-gradient-to-r from-[#0057FF]/30 to-[#0EA5E9]/30 rounded-full -z-10 animate-pulse-gentle blur-xl"></div> */}
-              <div className="absolute -top-4 -left-4 h-16 w-16 bg-gradient-to-r from-[#0057FF]/20 to-[#0EA5E9]/20 rounded-full -z-10 blur-lg"></div>
             </div>
           </div>
         </div>
         
-        {/* Animated train track */}
-        <div className="absolute bottom-0 left-0 right-0 h-3 bg-[#3280f5]">
-          <div className="train-track">
-            <div className="train-animation"></div>
+        {/* Enhanced animated train track */}
+        <div className="absolute -bottom-4 left-0 right-0 h-14">
+          <div className="railroad-track">
+            <div className="track-light"></div>
           </div>
         </div>
       </section>
