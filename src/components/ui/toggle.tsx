@@ -15,6 +15,10 @@ const toggleVariants = cva(
           "border border-input bg-transparent hover:bg-accent hover:text-accent-foreground",
         modern: 
           "data-[state=on]:bg-irctc-blue data-[state=on]:text-white hover:bg-irctc-blue-light hover:text-irctc-blue-dark",
+        blue:
+          "data-[state=on]:bg-irctc-medium data-[state=on]:text-white hover:bg-irctc-blue-light hover:text-irctc-dark",
+        darkblue:
+          "data-[state=on]:bg-irctc-darkest data-[state=on]:text-white hover:bg-irctc-dark/60 hover:text-white",
       },
       size: {
         default: "h-10 px-3",

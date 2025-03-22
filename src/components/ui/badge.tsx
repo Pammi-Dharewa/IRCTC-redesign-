@@ -16,9 +16,9 @@ const badgeVariants = cva(
         destructive:
           "border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80",
         outline: "text-foreground",
-        blue: "border-transparent bg-irctc-blue text-white hover:bg-irctc-blue-dark",
-        red: "border-transparent bg-irctc-red text-white hover:bg-irctc-red-dark",
-        yellow: "border-transparent bg-irctc-yellow text-black hover:bg-irctc-yellow/80",
+        blue: "border-transparent bg-irctc-blue text-white hover:bg-irctc-medium",
+        darkblue: "border-transparent bg-irctc-darkest text-white hover:bg-irctc-dark",
+        light: "border-transparent bg-irctc-light text-irctc-darkest hover:bg-irctc-lightest/80",
         teal: "border-transparent bg-irctc-teal text-white hover:bg-irctc-teal/80",
       },
     },

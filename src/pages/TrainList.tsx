@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { ArrowLeft, Filter, ChevronDown, Train, MapPin, CalendarDays, Search } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -66,18 +67,18 @@ const TrainList = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0a0e17]">
+    <div className="min-h-screen bg-irctc-dark">
       <div className="container mx-auto px-4 pt-24 pb-12">
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center justify-between mb-6">
-            <Link to="/" className="inline-flex items-center text-[#0057FF] hover:text-[#003DB3]">
+            <Link to="/" className="inline-flex items-center text-irctc-light hover:text-irctc-lightest">
               <ArrowLeft className="h-4 w-4 mr-2" />
               Back to Home
             </Link>
             <Button 
               variant="outline" 
-              className="border-[#0057FF] text-[#0057FF] hover:bg-[#0057FF]/10"
+              className="border-irctc-medium text-irctc-light hover:bg-irctc-medium/10"
               onClick={() => setIsFilterOpen(!isFilterOpen)}
             >
               <Filter className="h-4 w-4 mr-2" />
@@ -87,18 +88,18 @@ const TrainList = () => {
           </div>
 
           {/* Search Summary */}
-          <div className="bg-white/5 rounded-lg p-4">
+          <div className="bg-irctc-darkest/50 rounded-lg p-4 border border-irctc-dark-medium">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
               <div className="flex items-center gap-4">
                 <div className="flex items-center gap-2">
-                  <MapPin className="h-5 w-5 text-[#0057FF]" />
+                  <MapPin className="h-5 w-5 text-irctc-light" />
                   <div>
                     <div className="text-white font-medium">New Delhi → Mumbai Central</div>
-                    <div className="text-white/70 text-sm">Mon, 12 Apr 2024</div>
+                    <div className="text-gray-300 text-sm">Mon, 12 Apr 2024</div>
                   </div>
                 </div>
               </div>
-              <div className="text-white/70 text-sm">
+              <div className="text-gray-300 text-sm">
                 Showing {trains.length} trains
               </div>
             </div>
@@ -108,7 +109,7 @@ const TrainList = () => {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Filters Sidebar */}
           <div className={`lg:col-span-1 space-y-6 ${isFilterOpen ? 'block' : 'hidden lg:block'}`}>
-            <div className="bg-white/5 rounded-lg p-4">
+            <div className="bg-irctc-darkest/50 rounded-lg p-4 border border-irctc-dark-medium">
               <div className="space-y-6">
                 {/* Search Input */}
                 <div className="space-y-2">
@@ -118,7 +119,7 @@ const TrainList = () => {
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
                       placeholder="Search trains..."
-                      className="pl-10 bg-[#0f172a] border-white/10 text-white placeholder:text-white/50 focus:border-[#0057FF]"
+                      className="pl-10 bg-irctc-dark-medium border-irctc-dark-light/30 text-white placeholder:text-white/50 focus:border-irctc-medium"
                     />
                   </div>
                 </div>
@@ -131,7 +132,7 @@ const TrainList = () => {
                       <label key={cls} className="flex items-center group cursor-pointer">
                         <input 
                           type="checkbox" 
-                          className="rounded mr-2 text-[#0057FF]"
+                          className="rounded mr-2 text-irctc-medium"
                           checked={selectedClass.includes(cls)}
                           onChange={(e) => {
                             if (e.target.checked) {
@@ -141,7 +142,7 @@ const TrainList = () => {
                             }
                           }}
                         />
-                        <span className="text-white/70 group-hover:text-white">{cls}</span>
+                        <span className="text-gray-300 group-hover:text-white">{cls}</span>
                       </label>
                     ))}
                   </div>
@@ -160,7 +161,7 @@ const TrainList = () => {
                       <label key={range.value} className="flex items-center group cursor-pointer">
                         <input 
                           type="checkbox" 
-                          className="rounded mr-2 text-[#0057FF]"
+                          className="rounded mr-2 text-irctc-medium"
                           checked={selectedPriceRange.includes(range.value)}
                           onChange={(e) => {
                             if (e.target.checked) {
@@ -170,7 +171,7 @@ const TrainList = () => {
                             }
                           }}
                         />
-                        <span className="text-white/70 group-hover:text-white">{range.label}</span>
+                        <span className="text-gray-300 group-hover:text-white">{range.label}</span>
                       </label>
                     ))}
                   </div>
@@ -186,14 +187,14 @@ const TrainList = () => {
                 <Button 
                   variant="outline" 
                   size="sm" 
-                  className="rounded-lg text-xs border-[#0057FF] text-[#0057FF] hover:bg-[#0057FF]/10"
+                  className="rounded-lg text-xs border-irctc-medium text-irctc-light hover:bg-irctc-medium/10"
                 >
                   Sort by Departure
                 </Button>
                 <Button 
                   variant="outline" 
                   size="sm" 
-                  className="rounded-lg text-xs border-[#0057FF] text-[#0057FF] hover:bg-[#0057FF]/10"
+                  className="rounded-lg text-xs border-irctc-medium text-irctc-light hover:bg-irctc-medium/10"
                 >
                   Sort by Duration
                 </Button>
@@ -222,19 +223,19 @@ const TrainList = () => {
             <Pagination className="mt-8">
               <PaginationContent>
                 <PaginationItem>
-                  <PaginationPrevious href="#" className="rounded-xl hover:bg-[#0057FF]/10 hover:text-[#0057FF]" />
+                  <PaginationPrevious href="#" className="rounded-xl hover:bg-irctc-medium/10 hover:text-irctc-light" />
                 </PaginationItem>
                 <PaginationItem>
-                  <PaginationLink href="#" isActive className="rounded-xl bg-[#0057FF]">1</PaginationLink>
+                  <PaginationLink href="#" isActive className="rounded-xl bg-irctc-medium text-white">1</PaginationLink>
                 </PaginationItem>
                 <PaginationItem>
-                  <PaginationLink href="#" className="rounded-xl hover:bg-[#0057FF]/10 hover:text-[#0057FF]">2</PaginationLink>
+                  <PaginationLink href="#" className="rounded-xl hover:bg-irctc-medium/10 hover:text-irctc-light">2</PaginationLink>
                 </PaginationItem>
                 <PaginationItem>
-                  <PaginationLink href="#" className="rounded-xl hover:bg-[#0057FF]/10 hover:text-[#0057FF]">3</PaginationLink>
+                  <PaginationLink href="#" className="rounded-xl hover:bg-irctc-medium/10 hover:text-irctc-light">3</PaginationLink>
                 </PaginationItem>
                 <PaginationItem>
-                  <PaginationNext href="#" className="rounded-xl hover:bg-[#0057FF]/10 hover:text-[#0057FF]" />
+                  <PaginationNext href="#" className="rounded-xl hover:bg-irctc-medium/10 hover:text-irctc-light" />
                 </PaginationItem>
               </PaginationContent>
             </Pagination>
