@@ -1,5 +1,3 @@
-# Welcome to your Lovable Project
-
 ## Project Info
 
 **URL**:https://irctc-redesign1.netlify.app/
