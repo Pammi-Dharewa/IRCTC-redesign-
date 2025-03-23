@@ -2,7 +2,7 @@
 
 ## Project Info
 
-**URL**: [Add your project URL here]
+**URL**:https://irctc-redesign1.netlify.app/
 
 ## How Can I Edit This Code?
 
