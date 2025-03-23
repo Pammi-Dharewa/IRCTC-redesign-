@@ -280,7 +280,7 @@ const Index = () => {
           </div>
           
           <div className="max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-2xl relative">
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent z-10 pointer-events-none"></div>
+            <div className=" absolute inset-0 bg-gradient-to-t from-black/50 to-transparent z-10 pointer-events-none"></div>
             
             <BackgroundVideo 
               src={maharaja}
@@ -292,9 +292,9 @@ const Index = () => {
               className="w-full aspect-video"
             />
             
-            <div className="absolute bottom-6 left-6 z-20">
+            <div className="absolute bottom-6 left-6 z-20 text-center">
               <div className="bg-black/50 backdrop-blur-sm px-4 py-2 rounded-lg">
-                <h3 className="text-white font-semibold">Maharaja Express: A Royal Journey</h3>
+                <h5 className="text-white font-semibold">Maharaja Express: A Royal Journey</h5>
                 <p className="text-gray-300 text-sm">Experience luxury train travel like never before</p>
               </div>
             </div>
